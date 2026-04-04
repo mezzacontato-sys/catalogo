@@ -1,0 +1,18 @@
+id,nome,categoria,subcategoria,descricao,unidade,destaque,ativo,foto_arquivo
+1,Porta Parana,Portas,Semi Sólidas,Porta de entrada da linha das semi sólidas.,un,sim,sim,porta-semi-solida-parana.jpg
+2,Porta Copaíba,Portas,Semi Sólidas,Porta superior a paraná em preenchimento e resistencia. ,un,sim,sim,porta-semi-solida-copaiba.jpg
+3,Porta  Naval,Portas,Semi Sólidas,Aqui é o melhor custo benefício pois é resistente a umidade e já vem pronta para receber a tinta. ,un,sim,sim,porta-semi-solida-naval.jpg
+4,Porta Londres,Portas,Sólidas,Porta mais vendida dessa linha. Design premium e que melhor se adapta a qualquer ambiente.,mÂ²,sim,sim,porta-solida-londres.jpg
+5,Porta 2 em 1,Portas,Sólidas,Porta ideal para quem procura ventilar a area com a segurança de uma porta de madeira sólida,mÂ²,sim,sim,porta-solida-2em1.png
+6,Porta Tabicao,Portas,Sólidas,Porta com tabuletas maiores que a veneziana. Facilita limpeza e ventila mais ainda.,mÂ²,sim,sim,porta-solida-tabicao.png
+7,Porta Colmeia,Portas,Com Vidro,Porta linda em madeira com vidro proporciona muita ventilaçao,un,sim,sim,porta-solida-Lateral Colmeia.jpg
+8,Janela Veneziana ,Janelas,Veneziana,Veneziana em madeira maciÃ§a com regulagem de inclinaÃ§Ã£o. VentilaÃ§Ã£o controlada e estÃ©tica clÃ¡ssica.,mÂ²,nao,sim,janela-veneziana.jpg
+9,Porta Branca,Concrem,Padrão,Design moderno e acabamento pronto. Versatilidade total para combinar com qualquer ambiente interno sem precisar de pintura.,un,sim,sim,Concrem Branca.jpg
+10,Porta Cinza,Concrem,Brisa Bandeirola.jpg,Design moderno e acabamento pronto. Versatilidade total para combinar com qualquer ambiente interno sem precisar de pintura.,un,sim,sim,Concrem Cinza.jpg
+11,2 Frisos,Concrem,Personalizada,Design moderno com 4 frisos horizontais. > Acabamento branco impecável e pronto para instalar. O detalhe linear que traz sofisticação e personalidade para qualquer ambiente interno.,un,sim,sim,Revestida 4 Frisos.jpg
+12,4 Frisos,Concrem,Personalizada,"Estética clean com 2 frisos horizontais. > Design minimalista e versátil. Pronta para o uso, combina a durabilidade da marca com um toque contemporâneo discreto.",un,sim,sim,Revestida 2 Frisos.jpg
+13,Mesa Cascata,Mesas,Cascata,Design orgânico e exclusivo que preserva as linhas naturais do tronco. Uma peça de presença marcante que une rusticidade e sofisticação em um acabamento contínuo e impecável.,mÂ²,sim,sim,Mesa Cascata.jpg
+14,Colmeia com Almofada,Portas ,Sólidas,...,mÂ²,sim,sim,Colméia Trabalhada Reta c Almofada.jpg
+15,Colmeia com Veneziana,Portas ,Sólidas,...,mÂ²,sim,sim,Colméia C Veneziana.jpg
+16,Revista,Portas ,Sólidas,...,mÂ²,sim,sim,Revista.jpg
+17,Brisa com Bandeirola,Janelas,Veneziana,...,mÂ²,sim,sim,Brisa Bandeirola.jpg
