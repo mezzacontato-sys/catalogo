@@ -3,408 +3,423 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CatálogoPro — Catálogo Digital para Madeireiras</title>
-<meta name="description" content="Catálogo digital profissional para madeireiras. Mostre seus produtos, atenda mais rápido e se destaque da concorrência.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet">
+<title>CatálogoPro — O Catálogo Digital Definitivo</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --ink:#0F172A;
-  --green:#10B981;
-  --green-hover:#059669;
-  --green-light:#ECFDF5;
-  --red:#EF4444;
-  --muted:#64748B;
-  --border:#E2E8F0;
-  --bg:#FFFFFF;
-  --bg-alt:#F8FAFC;
+/* ── BASE & RESET ────────────────────────────── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg-dark: #03040C;       
+  --ink-light: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.1);
+  --text-main: #FFFFFF;
+  --text-muted: #94A3B8;
+  --green: #10b981;
+  --green-light: #34d399;
+  --green-dark: #059669;
 }
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
-h1, h2, h3, h4, .font-heading { font-family: 'Plus Jakarta Sans', sans-serif; }
+html { scroll-behavior: smooth; background: var(--bg-dark); }
+body { 
+  font-family: 'Inter', sans-serif; 
+  color: var(--text-main); 
+  background: var(--bg-dark); 
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, .font-head { font-family: 'Plus Jakarta Sans', sans-serif; }
 
-/* ── HERO ─────────────────────────────────────── */
-#hero{background:var(--ink);color:#fff;padding:0 1.25rem}
-#nav{display:flex;align-items:center;justify-content:space-between;height:70px;max-width:1000px;margin:0 auto}
-#nav-logo{font-size:18px;font-weight:900;letter-spacing:-0.02em;color:#fff; font-family: 'Plus Jakarta Sans', sans-serif;}
-#nav-logo span{color:var(--green)}
-#nav-cta{padding:10px 22px;background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);border-radius:100px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .3s ease}
-#nav-cta:hover{background:rgba(255,255,255,0.2); border-color:rgba(255,255,255,0.4);}
+ul { list-style: none; }
+a { text-decoration: none; }
 
-#hero-body{max-width:760px;margin:0 auto;padding:5rem 0 6rem;text-align:center}
-#hero-label{display:inline-block;padding:6px 14px;background:rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2); border-radius:100px; font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--green);margin-bottom:1.5rem}
-#hero h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:900;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem}
-#hero h1 em{font-style:normal;color:var(--green)}
-#hero-sub{font-size:clamp(16px,2.5vw,18px);color:rgba(255,255,255,.7);line-height:1.6;max-width:580px;margin:0 auto 2.5rem}
-#hero-actions{display:flex;flex-direction:column;align-items:center;gap:16px}
-#btn-hero{display:inline-flex;align-items:center;gap:10px;padding:18px 36px;background:var(--green);border-radius:100px;color:#fff;font-family:'Inter',sans-serif;font-size:15px;font-weight:600;text-decoration:none;transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);box-shadow:0 8px 32px rgba(16, 185, 129, 0.3)}
-#btn-hero:hover{background:var(--green-hover); transform: translateY(-3px); box-shadow:0 12px 40px rgba(16, 185, 129, 0.4)}
-#btn-hero svg{width:20px;height:20px;fill:#fff;flex-shrink:0}
-#hero-note{font-size:13px;color:rgba(255,255,255,.4)}
+/* ── MESH GRADIENT BG ───────────────────────── */
+.ambient-glow {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.06), transparent 30%),
+    radial-gradient(circle at 90% 70%, rgba(52, 211, 153, 0.04), transparent 40%),
+    radial-gradient(circle at 50% 100%, rgba(5, 150, 105, 0.05), transparent 50%);
+}
 
-/* ── PROBLEMA ─────────────────────────────────── */
-#problema{background:var(--bg-alt);padding:6rem 1.25rem}
-#problema-inner{max-width:900px;margin:0 auto}
-.section-label{display:inline-block; font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:1rem; font-family: 'Plus Jakarta Sans', sans-serif;}
-#problema h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;line-height:1.15;letter-spacing:-.02em;margin-bottom:1.2rem}
-#problema-lead{font-size:18px;color:var(--muted);line-height:1.6;max-width:620px;margin-bottom:3.5rem}
+/* ── NAVBAR ─────────────────────────────────── */
+#navbar {
+  position: sticky; top: 0; left: 0; width: 100%; z-index: 100;
+  background: rgba(3, 4, 12, 0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1.5rem; height: 75px; 
+}
+.nav-logow { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 20px; font-weight: 800; letter-spacing: -0.02em;}
+.nav-logow span { color: var(--green); }
 
-.cards-problema{display:grid;grid-template-columns:1fr;gap:24px}
-@media(min-width:640px){.cards-problema{grid-template-columns:repeat(3,1fr)}}
-.card-prob{background:#fff;border:1px solid var(--border);border-radius:16px;padding:2rem 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease;}
-.card-prob:hover{transform: translateY(-5px); box-shadow: 0 12px 40px rgba(0,0,0,0.04);}
-.card-prob-icon{width:48px;height:48px;border-radius:12px;background:var(--bg-alt);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;}
-.card-prob-icon svg{width:24px;height:24px;stroke:var(--ink);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.card-prob h3{font-size:17px;font-weight:800;letter-spacing:-.01em;margin-bottom:.75rem;color:var(--ink)}
-.card-prob p{font-size:14px;color:var(--muted);line-height:1.6}
-.card-prob.destaque{border-color:rgba(239, 68, 68, 0.3);background:#FEF2F2}
-.card-prob.destaque .card-prob-icon{background:rgba(239, 68, 68, 0.1)}
-.card-prob.destaque .card-prob-icon svg{stroke:var(--red)}
+.nav-niche-badge { display: flex; align-items: center; gap: 8px; opacity: 0.8; background: rgba(255,255,255,0.03); padding: 6px 16px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.05); }
+.niche-text { font-size: 10px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.niche-company { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 12px; color: var(--green-light); }
+@media (max-width: 768px) { .nav-niche-badge { display: none; } }
 
-/* ── INSIGHT ──────────────────────────────────── */
-#insight{background:var(--ink);color:#fff;padding:6rem 1.25rem;text-align:center;position:relative;overflow:hidden;}
-#insight::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at center, rgba(16, 185, 129, 0.05) 0%, transparent 60%);z-index:0;}
-#insight-inner{max-width:800px;margin:0 auto;position:relative;z-index:1;}
-#insight blockquote{font-size:clamp(1.5rem,4vw,2.5rem);font-family: 'Plus Jakarta Sans', sans-serif;font-weight:800;line-height:1.25;letter-spacing:-.02em;margin-bottom:1.5rem}
-#insight blockquote em{font-style:normal;color:var(--green)}
-#insight p{font-size:16px;color:rgba(255,255,255,.6);line-height:1.6}
+.nav-btn {
+  background: transparent; color: #fff; border: 1px solid var(--border);
+  padding: 10px 24px; border-radius: 100px; font-weight: 600; font-family: 'Inter', sans-serif; font-size: 14px;
+  cursor: pointer; transition: all 0.3s ease;
+}
+.nav-btn:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.2); }
 
-/* ── SOLUÇÃO ──────────────────────────────────── */
-#solucao{padding:6rem 1.25rem;background:#fff}
-#solucao-inner{max-width:900px;margin:0 auto}
-#solucao h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;line-height:1.15;letter-spacing:-.02em;margin-bottom:1.2rem}
-#solucao-lead{font-size:18px;color:var(--muted);line-height:1.6;max-width:600px;margin-bottom:4rem}
+/* ── SEÇÃO 1: HERO ────────────────────────────── */
+#sec1-hero { position: relative; padding: 6rem 1.25rem 4rem; display: flex; flex-direction: column; align-items: center; text-align: center; }
+#sec1-hero::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at top center, rgba(16, 185, 129, 0.15) 0%, rgba(3, 4, 12, 0) 70%);
+  z-index: 0; pointer-events: none;
+}
+#sec1-hero > * { position: relative; z-index: 1; }
 
-.beneficios{display:grid;grid-template-columns:1fr;gap:32px;}
-@media(min-width:640px){.beneficios{grid-template-columns:repeat(2,1fr)}}
-.beneficio{display:flex;gap:1.25rem;align-items:flex-start}
-.beneficio-icon{width:56px;height:56px;background:var(--green-light);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.beneficio-icon svg{width:24px;height:24px;stroke:var(--green);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.beneficio-info h4{font-size:17px;font-family: 'Plus Jakarta Sans', sans-serif;font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
-.beneficio-info p{font-size:15px;color:var(--muted);line-height:1.6}
+.badges-wreath {
+  display: flex; align-items: center; gap: 3rem; margin-bottom: 2.5rem;
+}
+.badge-item { display: flex; flex-direction: column; align-items: center; }
+.badge-valor { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 900; font-size: 18px; margin-bottom: 2px; }
+.badge-desc { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+.stars span { color: #facc15; font-size: 14px; }
 
-/* ── DEMO ─────────────────────────────────────── */
-#demo{background:var(--bg-alt);padding:6rem 1.25rem;text-align:center}
-#demo-inner{max-width:860px;margin:0 auto}
-#demo h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;letter-spacing:-.02em;margin-bottom:1rem}
-#demo-sub{font-size:18px;color:var(--muted);margin-bottom:3.5rem}
-#demo-frame{background:var(--ink);border-radius:16px;overflow:hidden;max-width:320px;margin:0 auto 3rem;box-shadow:0 32px 80px rgba(15, 23, 42, 0.15); border: 1px solid rgba(255,255,255,0.1);}
-#demo-bar{background:rgba(255,255,255,0.05);padding:12px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,0.05);}
-.demo-dot{width:12px;height:12px;border-radius:50%}
-.demo-bar-url{flex:1;background:rgba(255,255,255,0.05);border-radius:100px;height:24px;margin:0 8px}
-#demo-screen{background:#fff;aspect-ratio:9/16;display:flex;align-items:center;justify-content:center;overflow:hidden}
-#demo-screen img{width:100%;height:100%;object-fit:cover;object-position:top}
-#demo-screen .demo-placeholder{padding:2rem;text-align:center;color:var(--muted);font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
-#btn-demo{display:inline-block;padding:16px 32px;border:1px solid var(--border);border-radius:100px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:var(--ink);background:#fff;text-decoration:none;transition:all .3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.02);}
-#btn-demo:hover{border-color:var(--ink);background:var(--bg-alt);}
+#sec1-hero h1 { font-size: clamp(2.8rem, 6vw, 4.5rem); line-height: 1.05; letter-spacing: -0.03em; max-width: 800px; margin-bottom: 1rem; }
+.grad-text {
+  font-size: clamp(2rem, 5vw, 3.8rem); line-height: 1.1; font-weight: 900;
+  margin-bottom: 3rem; background: linear-gradient(100deg, var(--green-light), var(--green-dark));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0px 0px 20px rgba(16, 185, 129, 0.3));
+}
 
-/* ── COMO FUNCIONA ────────────────────────────── */
-#como{padding:6rem 1.25rem;background:#fff}
-#como-inner{max-width:700px;margin:0 auto}
-#como h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;letter-spacing:-.02em;margin-bottom:1rem}
-#como-sub{font-size:18px;color:var(--muted);margin-bottom:4rem}
-.steps{display:flex;flex-direction:column;gap:0;position:relative;}
-.steps::before{content:'';position:absolute;left:24px;top:20px;bottom:20px;width:2px;background:var(--border);z-index:0;}
-.step{display:flex;gap:1.5rem;padding:2rem 0;position:relative;z-index:1;}
-.step-num{width:48px;height:48px;background:#fff;border:2px solid var(--border);border-radius:50%;color:var(--ink);font-size:18px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(0,0,0,0.05);}
-.step:hover .step-num{border-color:var(--green);color:var(--green);background:var(--green-light);}
-.step-info{padding-top:12px;}
-.step-info h4{font-size:18px;font-weight:800;margin-bottom:8px;letter-spacing:-.01em;}
-.step-info p{font-size:15px;color:var(--muted);line-height:1.6}
+.hero-bullets { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; margin-bottom: 3.5rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+.hero-bullets li { display: flex; align-items: center; gap: 14px; font-size: 16px; color: #cbd5e1; font-weight: 500; text-align: left; }
+.hero-bullets li svg { width: 24px; height: 24px; padding: 4px; border-radius: 6px; background: rgba(255,255,255,0.1); stroke: var(--green); stroke-width: 2; fill: none; flex-shrink: 0;}
 
-/* ── PREÇO / CTA ────────────────────────────────────── */
-#preco{background:var(--ink);color:#fff;padding:6rem 1.25rem;text-align:center;position:relative;overflow:hidden;}
-#preco::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:1000px;height:100%;background:radial-gradient(ellipse at top, rgba(16, 185, 129, 0.15), transparent 70%);z-index:0;}
-#preco-inner{max-width:600px;margin:0 auto;position:relative;z-index:1;}
-#preco .section-label{color:var(--green);}
-#preco h2{font-size:clamp(2rem,5vw,3rem);font-weight:900;line-height:1.1;letter-spacing:-.02em;margin-bottom:1.5rem}
-#preco-desc{font-size:18px;color:rgba(255,255,255,.7);margin-bottom:3rem;line-height:1.5}
-#btn-preco{display:inline-flex;align-items:center;gap:10px;padding:20px 40px;background:var(--green);border-radius:100px;color:#fff;font-family:'Inter',sans-serif;font-size:16px;font-weight:600;text-decoration:none;transition:all .3s ease;box-shadow:0 8px 32px rgba(16, 185, 129, 0.3)}
-#btn-preco:hover{background:var(--green-hover);transform:scale(1.02);box-shadow:0 12px 48px rgba(16, 185, 129, 0.4)}
-#btn-preco svg{width:22px;height:22px;fill:#fff;flex-shrink:0}
-.preco-itens{list-style:none;text-align:left;display:inline-flex;flex-direction:column;gap:12px;margin-bottom:3rem;}
-.preco-itens li{font-size:15px;display:flex;align-items:center;gap:12px;color:rgba(255,255,255,.8);}
-.preco-itens li svg{width:20px;height:20px;stroke:var(--green);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+.btn-gradient-super {
+  display: inline-block; background: linear-gradient(90deg, var(--green-dark), var(--green));
+  padding: 18px 48px; border-radius: 100px; font-size: 17px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800;
+  color: #fff; box-shadow: 0 10px 40px -10px rgba(16, 185, 129, 0.6); transition: all 0.3s ease; border: none; cursor: pointer;
+}
+.btn-gradient-super:hover { transform: translateY(-4px); box-shadow: 0 20px 50px -15px rgba(16, 185, 129, 0.8); }
 
-/* ── FOOTER ───────────────────────────────────── */
-footer{background:var(--ink);color:rgba(255,255,255,.4);padding:3rem 1.25rem;text-align:center;font-size:13px;border-top:1px solid rgba(255,255,255,0.05);}
-footer strong{color:rgba(255,255,255,.9)}
+/* ── SEÇÃO 2: CARROSSEL DE CATEGORIAS ────────── */
+#sec2-trilho { padding: 4rem 0; overflow: hidden; background: var(--bg-dark); }
+.marquee-container {
+  display: flex; width: max-content; gap: 4rem; padding: 2rem 0;
+}
+.cat-item { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
+.cat-icon-wrap {
+  width: 90px; height: 90px; border-radius: 50%; background: #0c0f1d;
+  border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center;
+  position: relative; box-shadow: inset 0 0 20px rgba(255,255,255,0.02); transition: all 0.3s ease;
+}
+.cat-item:hover .cat-icon-wrap { transform: translateY(-5px); border-color: rgba(16, 185, 129, 0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+/* Custom green glow color */
+.cat-item .cat-icon-wrap { box-shadow: inset 0 0 30px rgba(16, 185, 129, 0.1); }
+.cat-icon-wrap svg { width: 36px; height: 36px; stroke: #fff; stroke-width: 1.5; fill: none; }
+.cat-name { font-size: 16px; font-weight: 600; color: #fff; letter-spacing: -0.01em; }
+
+/* ── SEÇÃO 3: VÍDEO ───────────────────────────── */
+#sec3-video { padding: 4rem 1.25rem 6rem; background: var(--bg-dark); }
+.video-wrapper {
+  max-width: 800px; margin: 0 auto; position: relative; border-radius: 20px;
+  background: rgba(255,255,255,0.03); border: 1px solid var(--border); overflow: hidden;
+  box-shadow: 0 40px 100px -20px rgba(0,0,0,0.8); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center;
+}
+.video-wrapper::before { content:''; position:absolute; top:0; left:0; width:100%; height:100%; background: radial-gradient(circle at top, rgba(255,255,255,0.05), transparent 70%); pointer-events: none;}
+.video-img-mock { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
+.play-btn {
+  position: absolute; width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px);
+  display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.4);
+  transition: all 0.3s ease; z-index: 10;
+}
+.play-btn svg { width: 24px; height: 24px; fill: #fff; transform: translateX(2px); }
+.play-btn:hover { background: rgba(16, 185, 129, 0.5); transform: scale(1.1); border-color: var(--green); }
+
+.sec3-titles { text-align: center; margin-top: 5rem; }
+.sec3-titles h2 { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 500; letter-spacing: -0.02em; margin-bottom: 1rem; }
+.sec3-titles p { font-size: 17px; color: var(--text-muted); line-height: 1.6; font-weight: 500; max-width: 500px; margin: 0 auto; }
+
+/* ── SEÇÃO 4: COMO FUNCIONA (LIGHT THEME UX) ─── */
+#sec4-processo { padding: 8rem 1.25rem; background: #ffffff; color: #020617; }
+.proc-inner { max-width: 600px; margin: 0 auto; }
+.proc-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--green); text-transform: uppercase; margin-bottom: 1.5rem; display: block; }
+.proc-title { font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 2rem; letter-spacing: -0.03em; color: #0f172a; }
+.proc-sub { font-size: 17px; color: #64748b; margin-bottom: 5rem; }
+
+.timeline { position: relative; display: flex; flex-direction: column; gap: 0; }
+.timeline::before { content:''; position:absolute; left:23px; top:10px; bottom:10px; width:1px; background: #e2e8f0; z-index: 0; }
+.tm-step { display: flex; gap: 2.5rem; position: relative; z-index: 1; padding: 2rem 0; }
+.tm-num {
+  width: 48px; height: 48px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-family: 'Plus Jakarta Sans'; font-weight: 700; font-size: 17px;
+  flex-shrink: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); color: #0f172a;
+}
+.tm-content { padding-top: 10px; }
+.tm-content h3 { font-size: 19px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.01em; color: #0f172a; }
+.tm-content p { font-size: 15px; color: #64748b; line-height: 1.6; }
+
+/* ── SEÇÃO 5: PLANO / PREÇO (SPOTLIGHT SUAVE) ── */
+#sec5-cta { position: relative; padding: 10rem 1.25rem 10rem; background: var(--bg-dark); text-align: center; overflow: hidden; }
+#sec5-cta::before {
+  content: ''; position: absolute; top: 0; left: 0; 
+  width: 100%; height: 100%;
+  background: radial-gradient(circle at top center, rgba(16, 185, 129, 0.15) 0%, rgba(3, 4, 12, 0) 75%);
+  z-index: 0; pointer-events: none;
+}
+#sec5-cta > * { position: relative; z-index: 1; }
+.cta-label {
+  display: inline-block; padding: 6px 16px; border: 1px solid rgba(16, 185, 129, 0.3); 
+  border-radius: 100px; color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; margin-bottom: 2rem; background: rgba(16, 185, 129, 0.08);
+}
+.cta-title { font-size: clamp(2.5rem, 5vw, 3.8rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 2rem; text-shadow: 0 0 40px rgba(16, 185, 129, 0.2); }
+.cta-sub { font-size: 17px; color: var(--text-muted); max-width: 650px; margin: 0 auto 4rem; line-height: 1.6; }
+
+.cta-list { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 1.5rem; text-align: left; margin-bottom: 4rem; }
+.cta-list li { display: flex; align-items: center; gap: 1rem; font-size: 16px; color: #e2e8f0; font-weight: 500; }
+.cta-list li svg { width: 20px; height: 20px; stroke: var(--green); stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; filter: drop-shadow(0 0 5px rgba(16,185,129,0.4)); }
+
+.btn-wa-final {
+  display: inline-flex; align-items: center; gap: 10px; background: #10B981; color: #fff;
+  padding: 18px 40px; border-radius: 100px; font-size: 16px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800;
+  text-decoration: none; transition: all 0.3s ease; box-shadow: 0 0 40px 0 rgba(16, 185, 129, 0.3);
+}
+.btn-wa-final:hover { background: #059669; transform: scale(1.03); box-shadow: 0 0 60px 0 rgba(16, 185, 129, 0.5); }
+.btn-wa-final svg { width: 24px; height: 24px; fill: #fff; }
+
+footer { text-align: center; padding: 3rem 1.25rem; font-size: 13px; color: rgba(255,255,255,0.3); border-top: 1px solid var(--border); }
 </style>
 </head>
 <body>
 
-<!-- ── HERO ──────────────────────────────────────── -->
-<section id="hero">
-  <nav id="nav">
-    <div id="nav-logo">Catálogo<span>Pro</span></div>
-    <a id="nav-cta" href="https://wa.me/5585989020848?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20CatálogoPro">Falar com especialista</a>
-  </nav>
-  <div id="hero-body">
-    <div id="hero-label">A REALIDADE DO VAREJO DE MADEIRA</div>
-    <h1>A concorrência está brutal.<br>Você vai continuar tentando<br>vencer só no preço?</h1>
-    <p id="hero-sub">Quando um cliente te manda mensagem pedindo orçamento, ele acabou de copiar e colar a mesma mensagem para 5 madeireiras. Você virou uma disputa de leilão.</p>
-    <div id="hero-actions">
-      <a id="btn-hero" href="https://wa.me/5585989020848?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20CatálogoPro">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Quero meu catálogo
-      </a>
-      <span id="hero-note">Investimento único · Sem mensalidade</span>
+<div class="ambient-glow"></div>
+
+<!-- STICKY NAVBAR -->
+<header id="navbar">
+  <div class="nav-logow">Catálogo<span>Pro</span></div>
+  
+  <div class="nav-niche-badge">
+    <span class="niche-text">Tecnologia desenvolvida para o setor de</span>
+    <span class="niche-company">MADEIREIRAS</span>
+  </div>
+
+  <a href="https://wa.me/5585989020848" class="nav-btn">Falar com especialista</a>
+</header>
+
+<!-- SEÇÃO 1: HERO -->
+<section id="sec1-hero">
+  <div class="badges-wreath">
+    <div class="badge-item">
+      <span class="badge-valor">#1</span>
+      <span class="badge-desc">Catálogo Digital</span>
+    </div>
+    <div class="badge-item">
+      <span class="badge-valor">4.9/5</span>
+      <span class="stars">★★★★★</span>
+    </div>
+  </div>
+
+  <h1 class="font-head">A concorrência está brutal.<br>Vai continuar tentando vencer só</h1>
+  <div class="grad-text font-head">por causa do preço?</div>
+
+  <ul class="hero-bullets">
+    <li>
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+      Apresente quantos produtos quiser
+    </li>
+    <li>
+      <svg viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+      Catálogo desenhado para madeireiras
+    </li>
+    <li>
+      <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      Cotações direto no WhatsApp do vendedor
+    </li>
+  </ul>
+
+  <a href="https://wa.me/5585989020848" class="btn-gradient-super">
+    Quero meu catálogo agora
+  </a>
+</section>
+
+<!-- SEÇÃO 2: CARROSSEL DE INTEGRAÇÕES/CATEGORIAS -->
+<section id="sec2-trilho">
+  <div class="marquee-container" id="marquee">
+    <!-- PACOTE 1 -->
+    <div class="cat-item">
+      <div class="cat-icon-wrap"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><circle cx="15" cy="12" r="1"/></svg></div>
+      <span class="cat-name">Portas</span>
+    </div>
+    <div class="cat-item">
+      <div class="cat-icon-wrap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg></div>
+      <span class="cat-name">Janelas</span>
+    </div>
+    <div class="cat-item">
+      <div class="cat-icon-wrap"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+      <span class="cat-name">Estruturas</span>
+    </div>
+    <div class="cat-item">
+      <div class="cat-icon-wrap"><svg viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><line x1="10.85" y1="12.15" x2="19" y2="4"/><line x1="18" y1="5" x2="20" y2="7"/><line x1="15" y1="8" x2="17" y2="10"/></svg></div>
+      <span class="cat-name">Fechaduras</span>
+    </div>
+    <div class="cat-item">
+      <div class="cat-icon-wrap"><svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="4" rx="1" ry="1"/><line x1="6" y1="12" x2="6" y2="20"/><line x1="18" y1="12" x2="18" y2="20"/></svg></div>
+      <span class="cat-name">Madeirites</span>
+    </div>
+    
+    <!-- PACOTE 2 (DUPLICADO PARA EFEITO INFINITO) -->
+    <div class="cat-item">
+      <div class="cat-icon-wrap"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><circle cx="15" cy="12" r="1"/></svg></div>
+      <span class="cat-name">Portas</span>
+    </div>
+    <div class="cat-item">
+      <div class="cat-icon-wrap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg></div>
+      <span class="cat-name">Janelas</span>
+    </div>
+    <div class="cat-item">
+      <div class="cat-icon-wrap"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+      <span class="cat-name">Estruturas</span>
+    </div>
+    <div class="cat-item">
+      <div class="cat-icon-wrap"><svg viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><line x1="10.85" y1="12.15" x2="19" y2="4"/><line x1="18" y1="5" x2="20" y2="7"/><line x1="15" y1="8" x2="17" y2="10"/></svg></div>
+      <span class="cat-name">Fechaduras</span>
+    </div>
+    <div class="cat-item">
+      <div class="cat-icon-wrap"><svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="4" rx="1" ry="1"/><line x1="6" y1="12" x2="6" y2="20"/><line x1="18" y1="12" x2="18" y2="20"/></svg></div>
+      <span class="cat-name">Madeirites</span>
     </div>
   </div>
 </section>
 
-<!-- ── PROBLEMA ───────────────────────────────────── -->
-<section id="problema">
-  <div id="problema-inner">
-    <div class="section-label">Para madeireiras no varejo</div>
-    <h2>Você não precisa ser o mais barato.<br><em>Precisa ser o mais eficiente.</em></h2>
-    <p id="problema-lead">Enquanto seu cliente espera sua resposta, ele está mandando a mesma mensagem para mais 4 concorrentes. Como seu vendedor vai manter todos os clientes retidos e interessados?</p>
-    <div class="cards-problema">
-      <div class="card-prob destaque">
-        <span class="card-prob-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-        </span>
-        <h3>Se você demora, ele esquece</h3>
-        <p>O cliente que não recebe resposta rápida fecha com o primeiro que atender bem.</p>
-      </div>
-      <div class="card-prob destaque">
-        <span class="card-prob-icon">
-          <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-6 6"/></svg>
-        </span>
-        <h3>Se só manda preço, vira leilão</h3>
-        <p>Sendo custo a única diferença, ele escolhe o menor e a sua margem vai embora.</p>
-      </div>
-      <div class="card-prob destaque">
-        <span class="card-prob-icon">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </span>
-        <h3>Sua equipe não atende a todos</h3>
-        <p>Focar apenas no cliente quente e ignorar os demais é deixar dinheiro na mesa diariamente.</p>
-      </div>
+<!-- SEÇÃO 3: VIDEO -->
+<section id="sec3-video">
+  <div class="video-wrapper">
+    <!-- IMAGEM DE PLACEHOLDER - COLOQUE AQUI O SEU ARQUIVO JPG -->
+    <img src="print-catalogo.jpg" alt="Demonstração do Catálogo no Celular" class="video-img-mock">
+    <!-- BOTÃO PLAY FICTÍCIO COMO NA FOTO -->
+    <div class="play-btn">
+      <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
     </div>
   </div>
-</section>
 
-<!-- ── INSIGHT ─────────────────────────────────────── -->
-<section id="insight">
-  <div id="insight-inner">
-    <blockquote>"Ao mesmo tempo que ele te perguntou o preço, está falando com mais <em>4 madeireiras.</em> Quem vai ganhar essa disputa?"</blockquote>
-    <p>O cliente de hoje é visual, imediatista e cheio de opções. Quem oferece a melhor experiência de compra vence — não quem tem o menor preço.</p>
+  <div class="sec3-titles">
+    <h2 class="font-head">O melhor catálogo digital do mercado</h2>
+    <p>Todas as áreas categorizadas que seu cliente realmente pesquisa — em um só lugar</p>
   </div>
 </section>
 
-<!-- ── SOLUÇÃO ─────────────────────────────────────── -->
-<section id="solucao">
-  <div id="solucao-inner">
-    <div class="section-label">A solução</div>
-    <h2>Um catálogo digital profissional,<br>feito para a sua madeireira.</h2>
-    <p id="solucao-lead">Enquanto seu vendedor foca em fechar com quem já quer comprar, o catálogo trabalha por você com os outros 4 — mantendo-os interessados e visualizando seus produtos.</p>
-    <div class="beneficios">
-      <div class="beneficio">
-        <div class="beneficio-icon">
-          <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-        </div>
-        <div class="beneficio-info">
-          <h4>Funciona no WhatsApp</h4>
-          <p>Mande o link na conversa. O cliente abre, navega e já pede orçamento dos produtos escolhidos.</p>
-        </div>
-      </div>
-      <div class="beneficio">
-        <div class="beneficio-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-        </div>
-        <div class="beneficio-info">
-          <h4>Layout Customizado</h4>
-          <p>Catálogo com sua marca, fotos e links vinculados diretamente ao WhatsApp da sua operação.</p>
-        </div>
-      </div>
-      <div class="beneficio">
-        <div class="beneficio-icon">
-          <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        </div>
-        <div class="beneficio-info">
-          <h4>Foco em Velocidade</h4>
-          <p>O cliente descobre o produto rapidamente, poupando seu vendedor de processos repetitivos.</p>
-        </div>
-      </div>
-      <div class="beneficio">
-        <div class="beneficio-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <div class="beneficio-info">
-          <h4>Destaque Imediato</h4>
-          <p>Posicione-se acima da concorrência e transmita confiança através de um portfólio digital robusto.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- SEÇÃO 4: COMO FUNCIONA (TIMELINE) -->
+<section id="sec4-processo">
+  <div class="proc-inner">
+    <span class="proc-label">PROCESSO SIMPLES</span>
+    <h2 class="proc-title">Do pedido ao catálogo<br>no ar em 24h.</h2>
+    <p class="proc-sub">Sem complicação, sem precisar de equipe técnica.</p>
 
-<!-- ── DEMO ────────────────────────────────────────── -->
-<section id="demo">
-  <div id="demo-inner">
-    <div class="section-label">Veja como fica</div>
-    <h2>Profissional, rápido e direto ao ponto.</h2>
-    <p id="demo-sub">Filtros por categoria, busca, badge de "Mais vendido" e pedido direto pelo WhatsApp.</p>
-    <div id="demo-frame">
-      <div id="demo-bar">
-        <div class="demo-dot" style="background:#ff5f57"></div>
-        <div class="demo-dot" style="background:#febc2e"></div>
-        <div class="demo-dot" style="background:#28c840"></div>
-        <div class="demo-bar-url"></div>
-      </div>
-      <div id="demo-screen">
-        <div class="demo-placeholder">[ print do catálogo aqui ]</div>
-      </div>
-    </div>
-    <a id="btn-demo" href="https://catalogoweb-ten.vercel.app/catalogos/safra/" target="_blank">Ver demonstração ao vivo →</a>
-  </div>
-</section>
-
-<!-- ── COMO FUNCIONA ───────────────────────────────── -->
-<section id="como">
-  <div id="como-inner">
-    <div class="section-label">Processo simples</div>
-    <h2>Do pedido ao catálogo<br>no ar em 24h.</h2>
-    <p id="como-sub">Sem complicação, sem precisar de equipe técnica.</p>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-info">
-          <h4>Você escolhe seus produtos</h4>
+    <div class="timeline">
+      <div class="tm-step">
+        <div class="tm-num">1</div>
+        <div class="tm-content">
+          <h3>Você escolhe seus produtos</h3>
           <p>Te enviamos um link onde você seleciona quais produtos quer no catálogo e se algum é "Mais vendido" ou está em promoção.</p>
         </div>
       </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-info">
-          <h4>A gente monta tudo</h4>
-          <p>Com sua logo, seu WhatsApp e seus produtos selecionados. Em até 24 horas seu catálogo já está no ar.</p>
+      <div class="tm-step">
+        <div class="tm-num">2</div>
+        <div class="tm-content">
+          <h3>A gente monta tudo</h3>
+          <p>Com sua logo, seu WhatsApp e seus produtos selecionados. Em até 24 horas seu catálogo já está no ar pronto pro uso.</p>
         </div>
       </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-info">
-          <h4>Você recebe o link e começa a usar</h4>
-          <p>Manda pro seu vendedor e começa a enviar para os clientes no WhatsApp. É só isso.</p>
+      <div class="tm-step">
+        <div class="tm-num">3</div>
+        <div class="tm-content">
+          <h3>Você recebe o link e começa a usar</h3>
+          <p>Manda para o seu vendedor que já começa a enviar para os clientes orçarem or WhatsApp. É só isso e mais nada.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── PREÇO ───────────────────────────────────────── -->
-<section id="preco">
-  <div id="preco-inner">
-    <div class="section-label">Plano de Implementação</div>
-    <h2>Pronto para se destacar<br>e vender mais rápido?</h2>
-    <p id="preco-desc">Fale conosco para avaliar o modelo ideal para a sua madeireira e descubra como colocar seu catálogo no ar de forma simples e direta.</p>
-    <ul class="preco-itens">
-      <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Catálogo com todos os seus produtos do portfólio</li>
-      <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Identidade visual e número de WhatsApp integrados</li>
-      <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Interface limpa e busca rápida por categorias</li>
-      <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Recebimento de orçamentos centralizados no chat</li>
-    </ul>
-    <br>
-    <a id="btn-preco" href="https://wa.me/5585989020848?text=Olá!%20Gostaria%20de%20fazer%20um%20orçamento%20do%20CatálogoPro%20para%20minha%20madeireira.">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Solicitar orçamento via WhatsApp
-    </a>
-  </div>
+<!-- SEÇÃO 5: PLANO DE IMPLEMENTAÇÃO E CTA FINAL -->
+<section id="sec5-cta">
+  <span class="cta-label">PLANO DE IMPLEMENTAÇÃO</span>
+  <h2 class="cta-title">Pronto para se destacar<br>e vender mais rápido?</h2>
+  <p class="cta-sub">Fale conosco para avaliar o modelo ideal para a sua madeireira e descubra como colocar seu catálogo no ar de forma simples e direta.</p>
+  
+  <ul class="cta-list">
+    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Catálogo com todos os seus produtos do portfólio</li>
+    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Identidade visual e número de WhatsApp integrados</li>
+    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Interface limpa e busca rápida por categorias</li>
+    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Recebimento de orçamentos centralizados no chat</li>
+  </ul>
+  
+  <br>
+  <a href="https://wa.me/5585989020848" class="btn-wa-final">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+359:     Solicitar orçamento via WhatsApp
+  </a>
 </section>
 
-<!-- ── FOOTER ──────────────────────────────────────── -->
 <footer>
-  <strong>CatálogoPro</strong> · Catálogo digital para madeireiras · catalogomadeireira.com.br
+  <p>© 2024 CatálogoPro para Madeireiras. Todos os direitos reservados.</p>
 </footer>
 
-<!-- ── SCRIPTS ─────────────────────────────────────── -->
+<!-- ── SCRIPTS GSAP ─────────────────────────────────── -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
   gsap.registerPlugin(ScrollTrigger);
 
-  // 1. Hero Animation (Entrada ao carregar)
-  const heroTl = gsap.timeline();
-  heroTl.from("#nav", { y: -20, opacity: 0, duration: 0.8, ease: "power2.out" })
-        .from("#hero-label", { y: 20, opacity: 0, duration: 0.6, ease: "power2.out" }, "-=0.4")
-        .from("#hero h1", { y: 30, opacity: 0, duration: 0.8, ease: "power2.out" }, "-=0.4")
-        .from("#hero-sub", { y: 20, opacity: 0, duration: 0.6, ease: "power2.out" }, "-=0.5")
-        .from("#hero-actions", { y: 20, opacity: 0, duration: 0.6, ease: "power2.out" }, "-=0.4");
+  // Animação Inicial (Somente Seção 1)
+  const tlBase = gsap.timeline();
+  tlBase.from(".badges-wreath", { y: -20, opacity: 0, duration: 1, ease: "power3.out", delay: 0.2 })
+        .from("#sec1-hero h1", { y: 30, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.6")
+        .from(".grad-text", { scale: 0.95, opacity: 0, duration: 1, ease: "back.out(1.5)" }, "-=0.7")
+        .from(".hero-bullets li", { x: -20, opacity: 0, duration: 0.6, stagger: 0.15, ease: "power2.out" }, "-=0.4")
+        .from(".btn-gradient-super", { y: 20, opacity: 0, duration: 0.8, ease: "power2.out" }, "-=0.4");
 
-  // 2. Seção Problema
-  gsap.from(".card-prob", {
+  // Animação da Esteira de Categorias (Scrub vinculada ao Scroll)
+  gsap.to(".marquee-container", {
+    x: () => -(document.querySelector('.marquee-container').scrollWidth - window.innerWidth + 100),
+    ease: "none",
     scrollTrigger: {
-      trigger: "#problema",
-      start: "top 80%",
-    },
-    y: 40,
-    opacity: 0,
-    duration: 0.8,
-    stagger: 0.2, // Revela os cards um após o outro de forma elegante
-    ease: "power2.out"
+      trigger: "#sec2-trilho",
+      start: "top bottom",
+      end: "bottom top",
+      scrub: 1.5
+    }
   });
 
-  // 3. Insight Quote
-  gsap.from("#insight blockquote", {
+  gsap.to(".cat-icon-wrap", {
+    rotation: -360,
+    ease: "none",
     scrollTrigger: {
-      trigger: "#insight",
-      start: "top 85%",
-    },
-    y: 30,
-    opacity: 0,
-    duration: 0.8,
-    ease: "power2.out"
+      trigger: "#sec2-trilho",
+      start: "top bottom",
+      end: "bottom top",
+      scrub: 1.5
+    }
   });
 
-  // 4. Benefícios na Solução
-  gsap.from(".beneficio", {
-    scrollTrigger: {
-      trigger: "#solucao",
-      start: "top 80%",
-    },
-    x: -30,
-    opacity: 0,
-    duration: 0.8,
-    stagger: 0.15,
-    ease: "power2.out"
+  // Animação Card de Vídeo (Seção 3)
+  gsap.from(".video-wrapper", {
+    scrollTrigger: { trigger: "#sec3-video", start: "top 80%" },
+    y: 50, opacity: 0, rotationX: 10, scale: 0.95, duration: 1.2, ease: "power3.out"
   });
 
-  // 5. Bloco de Demo
-  gsap.from("#demo-inner", {
-    scrollTrigger: {
-      trigger: "#demo",
-      start: "top 75%",
-    },
-    y: 40,
-    opacity: 0,
-    duration: 0.8,
-    ease: "power2.out"
+  gsap.from(".sec3-titles h2, .sec3-titles p", {
+    scrollTrigger: { trigger: ".sec3-titles", start: "top 85%" },
+    y: 30, opacity: 0, duration: 1, stagger: 0.2, ease: "power2.out"
   });
 
-  // 6. Passos em Como Funciona
-  gsap.from(".step", {
-    scrollTrigger: {
-      trigger: "#como",
-      start: "top 80%",
-    },
-    y: 30,
-    opacity: 0,
-    duration: 0.8,
-    stagger: 0.2,
-    ease: "power2.out"
+  // Timeline (Seção 4)
+  gsap.from(".tm-step", {
+    scrollTrigger: { trigger: "#sec4-processo", start: "top 75%" },
+    y: 30, opacity: 0, duration: 0.8, stagger: 0.25, ease: "power2.out"
   });
 
-  // 7. Bloco de Preço
-  gsap.from("#preco-inner", {
-    scrollTrigger: {
-      trigger: "#preco",
-      start: "top 80%",
-    },
-    scale: 0.95,
-    opacity: 0,
-    duration: 0.8,
-    ease: "back.out(1.5)" // Leve salto para dar ênfase no preço, mas ainda contido
+  // CTA (Seção 5)
+  gsap.from("#sec5-cta", {
+    scrollTrigger: { trigger: "#sec5-cta", start: "top 80%" },
+    opacity: 0, y: 40, duration: 1, ease: "power2.out"
   });
 </script>
 
