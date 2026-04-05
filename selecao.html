@@ -34,8 +34,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
 .onboard-step{display:none}
 .onboard-step.ativo{display:block}
 .onboard-lista{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:1.5rem}
-.onboard-lista li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#444;line-height:1.5}
+.onboard-lista li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#444;line-height:1.6}
 .onboard-lista li .ob-num{width:22px;height:22px;background:var(--accent);color:#fff;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.onboard-lista li span+*,.onboard-lista li .ob-num~*{flex:1}
 #onboard-footer{padding:0 1.75rem 1.5rem;display:flex;flex-direction:column;gap:8px}
 #onboard-dots{display:flex;justify-content:center;gap:6px;margin-bottom:4px}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--border);transition:background .2s}
@@ -199,9 +200,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
         <!-- Tela 2 -->
         <div class="onboard-step" id="step-2">
           <ul class="onboard-lista">
-            <li><span class="ob-num">1</span>Selecione os produtos que quer exibir no catálogo</li>
-            <li><span class="ob-num">2</span>Marque se algum é <strong>"Mais vendido"</strong> ou está em <strong>Promoção</strong></li>
-            <li><span class="ob-num">3</span>Clique em <strong>Concluir</strong> quando terminar — é só isso!</li>
+            <li><span class="ob-num">1</span><span>Selecione os produtos que quer exibir no catálogo</span></li>
+            <li><span class="ob-num">2</span><span>Marque se algum é <strong>"Mais vendido"</strong> ou está em <strong>Promoção</strong></span></li>
+            <li><span class="ob-num">3</span><span>Clique em <strong>Concluir</strong> quando terminar — é só isso!</span></li>
           </ul>
         </div>
       </div>
