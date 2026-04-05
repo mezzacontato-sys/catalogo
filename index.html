@@ -4,19 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CatálogoPro — O Catálogo Digital Definitivo</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
 <style>
 /* ── BASE & RESET ────────────────────────────── */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --bg-dark: #03040C;       
+  --bg-dark: #020408;       
   --ink-light: rgba(255, 255, 255, 0.05);
   --border: rgba(255, 255, 255, 0.1);
   --text-main: #FFFFFF;
-  --text-muted: #94A3B8;
-  --green: #10b981;
-  --green-light: #34d399;
-  --green-dark: #059669;
+  --text-muted: #a0a0a0;
+  --green: #00e676; 
+  --green-dark: #00c853; 
 }
 html { scroll-behavior: smooth; background: var(--bg-dark); }
 body { 
@@ -31,19 +30,25 @@ h1, h2, h3, h4, .font-head { font-family: 'Plus Jakarta Sans', sans-serif; }
 ul { list-style: none; }
 a { text-decoration: none; }
 
-/* ── MESH GRADIENT BG ───────────────────────── */
+/* ── MESH GRADIENT BG (RESSUSCITADO) ────────── */
 .ambient-glow {
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none;
-  background: 
-    radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.06), transparent 30%),
-    radial-gradient(circle at 90% 70%, rgba(52, 211, 153, 0.04), transparent 40%),
-    radial-gradient(circle at 50% 100%, rgba(5, 150, 105, 0.05), transparent 50%);
+  background:
+    radial-gradient(circle at 10% 20%, rgba(0, 230, 118, 0.08), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(0, 200, 83, 0.05), transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(0, 230, 118, 0.03), transparent 60%);
+}
+
+/* Garante que seções claras ficam acima do glow */
+#sec1b-dor, #sec2-trilho, #sec4-processo {
+  position: relative;
+  z-index: 1;
 }
 
 /* ── NAVBAR ─────────────────────────────────── */
 #navbar {
   position: sticky; top: 0; left: 0; width: 100%; z-index: 100;
-  background: rgba(3, 4, 12, 0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  background: rgba(2, 4, 8, 0.8); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 1.5rem; height: 75px; 
@@ -53,7 +58,7 @@ a { text-decoration: none; }
 
 .nav-niche-badge { display: flex; align-items: center; gap: 8px; opacity: 0.8; background: rgba(255,255,255,0.03); padding: 6px 16px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.05); }
 .niche-text { font-size: 10px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
-.niche-company { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 12px; color: var(--green-light); }
+.niche-company { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 12px; color: var(--green); }
 @media (max-width: 768px) { .nav-niche-badge { display: none; } }
 
 .nav-btn {
@@ -61,13 +66,13 @@ a { text-decoration: none; }
   padding: 10px 24px; border-radius: 100px; font-weight: 600; font-family: 'Inter', sans-serif; font-size: 14px;
   cursor: pointer; transition: all 0.3s ease;
 }
-.nav-btn:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.2); }
+.nav-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); }
 
-/* ── SEÇÃO 1: HERO ────────────────────────────── */
-#sec1-hero { position: relative; padding: 6rem 1.25rem 4rem; display: flex; flex-direction: column; align-items: center; text-align: center; }
+/* ── SESSÃO 1: O GANCHO (ESCURA) ────────────── */
+#sec1-hero { position: relative; padding: 3rem 1.25rem 6.25rem; display: flex; flex-direction: column; align-items: center; text-align: center; background: transparent; }
 #sec1-hero::before {
   content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  background: radial-gradient(circle at top center, rgba(16, 185, 129, 0.15) 0%, rgba(3, 4, 12, 0) 70%);
+  background: radial-gradient(circle at top center, rgba(0, 230, 118, 0.1) 0%, transparent 70%);
   z-index: 0; pointer-events: none;
 }
 #sec1-hero > * { position: relative; z-index: 1; }
@@ -80,115 +85,132 @@ a { text-decoration: none; }
 .badge-desc { font-size: 12px; color: var(--text-muted); font-weight: 500; }
 .stars span { color: #facc15; font-size: 14px; }
 
-#sec1-hero h1 { font-size: clamp(2.8rem, 6vw, 4.5rem); line-height: 1.05; letter-spacing: -0.03em; max-width: 800px; margin-bottom: 1rem; }
-.grad-text {
-  font-size: clamp(2rem, 5vw, 3.8rem); line-height: 1.1; font-weight: 900;
-  margin-bottom: 3rem; background: linear-gradient(100deg, var(--green-light), var(--green-dark));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0px 0px 20px rgba(16, 185, 129, 0.3));
-}
-
-.hero-bullets { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; margin-bottom: 3.5rem; max-width: 480px; margin-left: auto; margin-right: auto; }
-.hero-bullets li { display: flex; align-items: center; gap: 14px; font-size: 16px; color: #cbd5e1; font-weight: 500; text-align: left; }
-.hero-bullets li svg { width: 24px; height: 24px; padding: 4px; border-radius: 6px; background: rgba(255,255,255,0.1); stroke: var(--green); stroke-width: 2; fill: none; flex-shrink: 0;}
+#sec1-hero h1 { font-size: clamp(2.5rem, 5.5vw, 4rem); line-height: 1.1; letter-spacing: -0.03em; max-width: 900px; margin-bottom: 4rem; }
+.highlight-green { color: var(--green); filter: drop-shadow(0px 0px 20px rgba(0, 230, 118, 0.15)); }
 
 .btn-gradient-super {
-  display: inline-block; background: linear-gradient(90deg, var(--green-dark), var(--green));
+  display: inline-flex; align-items: center; gap: 12px; background: linear-gradient(90deg, var(--green-dark), var(--green));
   padding: 18px 48px; border-radius: 100px; font-size: 17px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800;
-  color: #fff; box-shadow: 0 10px 40px -10px rgba(16, 185, 129, 0.6); transition: all 0.3s ease; border: none; cursor: pointer;
+  color: #fff; box-shadow: 0 10px 40px -10px rgba(0, 230, 118, 0.4); transition: all 0.3s ease; border: none; cursor: pointer;
+  opacity: 1 !important; visibility: visible !important;
 }
-.btn-gradient-super:hover { transform: translateY(-4px); box-shadow: 0 20px 50px -15px rgba(16, 185, 129, 0.8); }
+.btn-gradient-super:hover { transform: translateY(-4px); box-shadow: 0 20px 50px -15px rgba(0, 230, 118, 0.6); }
 
-/* ── SEÇÃO 2: CARROSSEL DE CATEGORIAS ────────── */
-#sec2-trilho { padding: 4rem 0; overflow: hidden; background: var(--bg-dark); }
-.marquee-container {
-  display: flex; width: max-content; gap: 4rem; padding: 2rem 0;
+/* ── SESSÃO 1B: A REALIDADE (CLARA) ──────────── */
+#sec1b-dor { 
+  position: relative; padding: 6.25rem 1.25rem 2rem; text-align: center; display: flex; flex-direction: column; align-items: center; 
+  background: #ffffff; color: #020617; 
 }
+.dor-kicker { font-size: 13px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2rem; display: inline-block; border: 1px solid #e2e8f0; padding: 8px 16px; border-radius: 100px; background: #f8fafc; }
+.dor-title { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.1; max-width: 900px; margin-bottom: 4rem; letter-spacing: -0.02em; color: #0f172a; }
+.dor-title span { color: var(--green-dark); }
+
+.dor-blockquote { 
+  display: flex; flex-direction: column; gap: 1.5rem; max-width: 700px; width: 100%; text-align: left; 
+  border-left: 4px solid var(--green-dark); padding-left: 2rem; margin: 0 auto;
+}
+.dor-sub { font-size: 19px; color: #1e293b; line-height: 1.6; font-weight: 600; }
+.dor-sub-muted { color: #475569; font-size: 18px; font-weight: 500; }
+.dor-hl { font-style: italic; color: #0f172a; font-weight: 800; text-decoration: underline; text-decoration-color: rgba(0, 200, 83, 0.4); text-decoration-thickness: 3px; text-underline-offset: 4px; }
+
+/* ── CARROSSEL DE CATEGORIAS (CLARA) ────────── */
+#sec2-trilho { padding: 2rem 0 6.25rem 0; overflow: hidden; background: #ffffff; border-bottom: 1px solid #e2e8f0; }
+
+@keyframes scrollMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 4rem)); } 
+}
+.marquee-container { 
+  display: flex; width: max-content; gap: 8rem; padding: 2rem 0; 
+  animation: scrollMarquee 25s linear infinite;
+}
+.marquee-container:hover { animation-play-state: paused; }
+
 .cat-item { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
 .cat-icon-wrap {
-  width: 90px; height: 90px; border-radius: 50%; background: #0c0f1d;
-  border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center;
-  position: relative; box-shadow: inset 0 0 20px rgba(255,255,255,0.02); transition: all 0.3s ease;
+  width: 90px; height: 90px; border-radius: 50%; background: #ffffff;
+  border: 1px solid #cbd5e1; display: flex; align-items: center; justify-content: center;
+  position: relative; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.02);
 }
-.cat-item:hover .cat-icon-wrap { transform: translateY(-5px); border-color: rgba(16, 185, 129, 0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-/* Custom green glow color */
-.cat-item .cat-icon-wrap { box-shadow: inset 0 0 30px rgba(16, 185, 129, 0.1); }
-.cat-icon-wrap svg { width: 36px; height: 36px; stroke: #fff; stroke-width: 1.5; fill: none; }
-.cat-name { font-size: 16px; font-weight: 600; color: #fff; letter-spacing: -0.01em; }
+.cat-item:hover .cat-icon-wrap { transform: translateY(-5px); border-color: var(--green-dark); box-shadow: 0 10px 30px rgba(0, 200, 83, 0.15); }
+.cat-icon-wrap svg { width: 36px; height: 36px; stroke: #0f172a; stroke-width: 1.5; fill: none; transition: stroke 0.3s ease; }
+.cat-item:hover svg { stroke: var(--green-dark); }
+.cat-name { font-size: 16px; font-weight: 700; color: #0f172a; letter-spacing: -0.01em; }
 
-/* ── SEÇÃO 3: VÍDEO ───────────────────────────── */
-#sec3-video { padding: 4rem 1.25rem 6rem; background: var(--bg-dark); }
+/* ── SESSÃO 3: A PROVA (ESCURA) ─────────────── */
+#sec3-video { padding: 6.25rem 1.25rem; background: transparent; }
+.sec3-titles { text-align: center; margin-bottom: 5rem; }
+.sec3-titles h2 { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1rem; color: #fff;}
+.sec3-titles p { font-size: 18px; color: var(--green); line-height: 1.6; font-weight: 600; max-width: 500px; margin: 0 auto; letter-spacing: 0.02em;}
+
 .video-wrapper {
-  max-width: 800px; margin: 0 auto; position: relative; border-radius: 20px;
-  background: rgba(255,255,255,0.03); border: 1px solid var(--border); overflow: hidden;
-  box-shadow: 0 40px 100px -20px rgba(0,0,0,0.8); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center;
+  max-width: 320px; margin: 0 auto; position: relative; border-radius: 40px;
+  background: #090a0f; border: 12px solid #1f2233; overflow: hidden;
+  box-shadow: 0 50px 100px -20px rgba(0, 230, 118, 0.15), inset 0 0 0 1px rgba(255,255,255,0.1); 
+  aspect-ratio: 9/19; display: flex; align-items: center; justify-content: center;
 }
-.video-wrapper::before { content:''; position:absolute; top:0; left:0; width:100%; height:100%; background: radial-gradient(circle at top, rgba(255,255,255,0.05), transparent 70%); pointer-events: none;}
-.video-img-mock { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
+.video-wrapper::after { content: ''; position: absolute; top: -1px; left: 50%; transform: translateX(-50%); width: 110px; height: 26px; background: #1f2233; border-radius: 0 0 14px 14px; z-index: 10; }
+.video-wrapper::before { content:''; position:absolute; top:0; left:0; width:100%; height:100%; background: radial-gradient(circle at top, rgba(255,255,255,0.05), transparent 70%); pointer-events: none; z-index: 2;}
+
+.video-img-mock { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; filter: contrast(1.1); }
 .play-btn {
   position: absolute; width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px);
   display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.4);
   transition: all 0.3s ease; z-index: 10;
 }
 .play-btn svg { width: 24px; height: 24px; fill: #fff; transform: translateX(2px); }
-.play-btn:hover { background: rgba(16, 185, 129, 0.5); transform: scale(1.1); border-color: var(--green); }
+.play-btn:hover { background: rgba(0, 230, 118, 0.5); transform: scale(1.1); border-color: var(--green); }
 
-.sec3-titles { text-align: center; margin-top: 5rem; }
-.sec3-titles h2 { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 500; letter-spacing: -0.02em; margin-bottom: 1rem; }
-.sec3-titles p { font-size: 17px; color: var(--text-muted); line-height: 1.6; font-weight: 500; max-width: 500px; margin: 0 auto; }
+.video-caption { text-align: center; font-size: 16px; color: var(--text-muted); margin-top: 4rem; max-width: 450px; margin-inline: auto; font-weight: 500; }
 
-/* ── SEÇÃO 4: COMO FUNCIONA (LIGHT THEME UX) ─── */
-#sec4-processo { padding: 8rem 1.25rem; background: #ffffff; color: #020617; }
-.proc-inner { max-width: 600px; margin: 0 auto; }
-.proc-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--green); text-transform: uppercase; margin-bottom: 1.5rem; display: block; }
-.proc-title { font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 2rem; letter-spacing: -0.03em; color: #0f172a; }
-.proc-sub { font-size: 17px; color: #64748b; margin-bottom: 5rem; }
+/* ── SESSÃO 4: O MÉTODO (CLARA) ─────────────── */
+#sec4-processo { padding: 6.25rem 1.25rem; background: #ffffff; color: #020617; border-top: 1px solid #e2e8f0; }
+.proc-inner { max-width: 650px; margin: 0 auto; }
+.proc-title { font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.1; margin-bottom: 1rem; letter-spacing: -0.03em; color: #0f172a; }
+.proc-sub { font-size: 18px; color: #475569; font-weight: 500; margin-bottom: 5rem; }
 
 .timeline { position: relative; display: flex; flex-direction: column; gap: 0; }
 .timeline::before { content:''; position:absolute; left:23px; top:10px; bottom:10px; width:1px; background: #e2e8f0; z-index: 0; }
 .tm-step { display: flex; gap: 2.5rem; position: relative; z-index: 1; padding: 2rem 0; }
 .tm-num {
-  width: 48px; height: 48px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center; font-family: 'Plus Jakarta Sans'; font-weight: 700; font-size: 17px;
-  flex-shrink: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); color: #0f172a;
+  width: 48px; height: 48px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-family: 'Plus Jakarta Sans'; font-weight: 800; font-size: 17px;
+  flex-shrink: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); color: #0f172a;
 }
 .tm-content { padding-top: 10px; }
-.tm-content h3 { font-size: 19px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.01em; color: #0f172a; }
-.tm-content p { font-size: 15px; color: #64748b; line-height: 1.6; }
+.tm-content h3 { font-size: 20px; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.01em; color: #0f172a; }
+.tm-content p { font-size: 16px; color: #475569; line-height: 1.6; font-weight: 500; }
 
-/* ── SEÇÃO 5: PLANO / PREÇO (SPOTLIGHT SUAVE) ── */
-#sec5-cta { position: relative; padding: 10rem 1.25rem 10rem; background: var(--bg-dark); text-align: center; overflow: hidden; }
+.proc-summary { margin-top: 5rem; text-align: left; font-weight: 800; font-size: 18px; color: #0f172a; border-left: 4px solid var(--green-dark); padding-left: 1.5rem; max-width: 650px; background: #f8fafc; padding: 1.5rem 1.5rem 1.5rem 2rem; border-radius: 0 12px 12px 0; }
+
+/* ── SESSÃO 5: FECHAMENTO (ESCURA) ──────────── */
+#sec5-cta { 
+  position: relative; padding: 6.25rem 1.25rem 10rem; text-align: center; overflow: hidden; 
+  background: transparent; 
+}
 #sec5-cta::before {
-  content: ''; position: absolute; top: 0; left: 0; 
-  width: 100%; height: 100%;
-  background: radial-gradient(circle at top center, rgba(16, 185, 129, 0.15) 0%, rgba(3, 4, 12, 0) 75%);
+  content: ''; position: absolute; bottom: -50%; left: 50%; transform: translateX(-50%); width: 100vw; height: 100%;
+  background: radial-gradient(ellipse at bottom, rgba(0, 200, 83, 0.2) 0%, transparent 70%);
   z-index: 0; pointer-events: none;
 }
 #sec5-cta > * { position: relative; z-index: 1; }
-.cta-label {
-  display: inline-block; padding: 6px 16px; border: 1px solid rgba(16, 185, 129, 0.3); 
-  border-radius: 100px; color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; margin-bottom: 2rem; background: rgba(16, 185, 129, 0.08);
-}
-.cta-title { font-size: clamp(2.5rem, 5vw, 3.8rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 2rem; text-shadow: 0 0 40px rgba(16, 185, 129, 0.2); }
-.cta-sub { font-size: 17px; color: var(--text-muted); max-width: 650px; margin: 0 auto 4rem; line-height: 1.6; }
 
-.cta-list { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 1.5rem; text-align: left; margin-bottom: 4rem; }
-.cta-list li { display: flex; align-items: center; gap: 1rem; font-size: 16px; color: #e2e8f0; font-weight: 500; }
-.cta-list li svg { width: 20px; height: 20px; stroke: var(--green); stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; filter: drop-shadow(0 0 5px rgba(16,185,129,0.4)); }
+.cta-title { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 2rem; max-width: 800px; margin-inline: auto; color: #fff;}
+.cta-sub { font-size: 18px; color: var(--text-muted); max-width: 700px; margin: 0 auto 5rem; line-height: 1.6; font-weight: 500; }
 
 .btn-wa-final {
-  display: inline-flex; align-items: center; gap: 10px; background: #10B981; color: #fff;
-  padding: 18px 40px; border-radius: 100px; font-size: 16px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800;
-  text-decoration: none; transition: all 0.3s ease; box-shadow: 0 0 40px 0 rgba(16, 185, 129, 0.3);
+  display: inline-flex; align-items: center; gap: 12px; background: var(--green-dark); color: #fff;
+  padding: 20px 48px; border-radius: 100px; font-size: 18px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800;
+  text-decoration: none; transition: all 0.3s ease; box-shadow: 0 0 50px 0 rgba(0, 230, 118, 0.4);
 }
-.btn-wa-final:hover { background: #059669; transform: scale(1.03); box-shadow: 0 0 60px 0 rgba(16, 185, 129, 0.5); }
-.btn-wa-final svg { width: 24px; height: 24px; fill: #fff; }
+.btn-wa-final:hover { background: #00b248; transform: scale(1.03); box-shadow: 0 0 70px 0 rgba(0, 230, 118, 0.7); }
 
-footer { text-align: center; padding: 3rem 1.25rem; font-size: 13px; color: rgba(255,255,255,0.3); border-top: 1px solid var(--border); }
+footer { text-align: center; padding: 3rem 1.25rem; font-size: 13px; color: rgba(255,255,255,0.3); border-top: 1px solid var(--border); background: var(--bg-dark); }
 </style>
 </head>
 <body>
 
+<!-- COMPONENTE: GLOW AMBIENTE GLOBAL -->
 <div class="ambient-glow"></div>
 
 <!-- STICKY NAVBAR -->
@@ -203,7 +225,7 @@ footer { text-align: center; padding: 3rem 1.25rem; font-size: 13px; color: rgba
   <a href="https://wa.me/5585989020848" class="nav-btn">Falar com especialista</a>
 </header>
 
-<!-- SEÇÃO 1: HERO -->
+<!-- SESSÃO 1: O GANCHO (ESCURA) -->
 <section id="sec1-hero">
   <div class="badges-wreath">
     <div class="badge-item">
@@ -216,30 +238,27 @@ footer { text-align: center; padding: 3rem 1.25rem; font-size: 13px; color: rgba
     </div>
   </div>
 
-  <h1 class="font-head">A concorrência está brutal.<br>Vai continuar tentando vencer só</h1>
-  <div class="grad-text font-head">por causa do preço?</div>
-
-  <ul class="hero-bullets">
-    <li>
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-      Apresente quantos produtos quiser
-    </li>
-    <li>
-      <svg viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
-      Catálogo desenhado para madeireiras
-    </li>
-    <li>
-      <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-      Cotações direto no WhatsApp do vendedor
-    </li>
-  </ul>
+  <h1 class="font-head">A concorrência está <span class="highlight-green">brutal</span>.<br>Você vai continuar tentando<br><span class="highlight-green">vencer só no preço?</span></h1>
 
   <a href="https://wa.me/5585989020848" class="btn-gradient-super">
-    Quero meu catálogo agora
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px; fill: #fff;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Quero meu catálogo
   </a>
 </section>
 
-<!-- SEÇÃO 2: CARROSSEL DE INTEGRAÇÕES/CATEGORIAS -->
+<!-- SESSÃO 1B: A REALIDADE (CLARA) -->
+<section id="sec1b-dor">
+  <span class="dor-kicker">Um fato que ninguém pode negar:</span>
+  <h2 class="dor-title font-head">O cliente que acabou de te chamar no <span>WhatsApp</span> está falando com pelo menos mais 5 madeireiras.</h2>
+  
+  <div class="dor-blockquote">
+    <p class="dor-sub">No final do dia, ele vai fechar com quem atender melhor e mais rápido.</p>
+    <p class="dor-sub dor-sub-muted">Se você demora para mandar uma lista de preços fria, ele te esquece em minutos.</p>
+    <p class="dor-sub dor-sub-muted">E se você foca só no preço, acaba entrando em um leilão que, na maioria das vezes, <span class="dor-hl">nem vale a pena vencer.</span></p>
+  </div>
+</section>
+
+<!-- CARROSSEL DE CATEGORIAS (CLARA) -->
 <section id="sec2-trilho">
   <div class="marquee-container" id="marquee">
     <!-- PACOTE 1 -->
@@ -264,7 +283,7 @@ footer { text-align: center; padding: 3rem 1.25rem; font-size: 13px; color: rgba
       <span class="cat-name">Madeirites</span>
     </div>
     
-    <!-- PACOTE 2 (DUPLICADO PARA EFEITO INFINITO) -->
+    <!-- PACOTE 2 (DUPLICADO PARA EFEITO INFINITO/SCRUB) -->
     <div class="cat-item">
       <div class="cat-icon-wrap"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><circle cx="15" cy="12" r="1"/></svg></div>
       <span class="cat-name">Portas</span>
@@ -288,73 +307,61 @@ footer { text-align: center; padding: 3rem 1.25rem; font-size: 13px; color: rgba
   </div>
 </section>
 
-<!-- SEÇÃO 3: VIDEO -->
+<!-- SESSÃO 3: A PROVA (ESCURA) -->
 <section id="sec3-video">
-  <div class="video-wrapper">
-    <!-- IMAGEM DE PLACEHOLDER - COLOQUE AQUI O SEU ARQUIVO JPG -->
-    <img src="print-catalogo.jpg" alt="Demonstração do Catálogo no Celular" class="video-img-mock">
-    <!-- BOTÃO PLAY FICTÍCIO COMO NA FOTO -->
-    <div class="play-btn">
-      <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-    </div>
+  <div class="sec3-titles">
+    <h2 class="font-head">Mostre profissionalismo, não apenas preço.</h2>
+    <p>Veja como sua madeireira vai se destacar em 15 segundos.</p>
   </div>
 
-  <div class="sec3-titles">
-    <h2 class="font-head">O melhor catálogo digital do mercado</h2>
-    <p>Todas as áreas categorizadas que seu cliente realmente pesquisa — em um só lugar</p>
+  <div class="video-wrapper">
+    <iframe src="https://catalogomadeireira.com.br/catalogos/safra/" scrolling="yes" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;display:block;z-index:1;"></iframe>
   </div>
+  
+  <p class="video-caption">O melhor catálogo digital do mercado, desenhado especificamente para o varejo de madeiras.</p>
 </section>
 
-<!-- SEÇÃO 4: COMO FUNCIONA (TIMELINE) -->
+<!-- SESSÃO 4: O MÉTODO (CLARA) -->
 <section id="sec4-processo">
   <div class="proc-inner">
-    <span class="proc-label">PROCESSO SIMPLES</span>
-    <h2 class="proc-title">Do pedido ao catálogo<br>no ar em 24h.</h2>
-    <p class="proc-sub">Sem complicação, sem precisar de equipe técnica.</p>
+    <h2 class="proc-title">Seu Catálogo Profissional no ar em 24 Horas.</h2>
+    <p class="proc-sub">Simples, rápido e sem precisar de equipe técnica.</p>
 
     <div class="timeline">
       <div class="tm-step">
         <div class="tm-num">1</div>
         <div class="tm-content">
-          <h3>Você escolhe seus produtos</h3>
-          <p>Te enviamos um link onde você seleciona quais produtos quer no catálogo e se algum é "Mais vendido" ou está em promoção.</p>
+          <h3>Você Escolhe, Nós Criamos:</h3>
+          <p>Selecione seus produtos e nós enviamos um link para você marcar "Mais Vendidos" e promoções. Tudo pronto para sua logo e identidade.</p>
         </div>
       </div>
       <div class="tm-step">
         <div class="tm-num">2</div>
         <div class="tm-content">
-          <h3>A gente monta tudo</h3>
-          <p>Com sua logo, seu WhatsApp e seus produtos selecionados. Em até 24 horas seu catálogo já está no ar pronto pro uso.</p>
+          <h3>Nós Montamos Tudo para Você:</h3>
+          <p>Integramos sua logo, seu WhatsApp e seus produtos. Em até 24 horas, seu catálogo está pronto para uso, visualmente irresistível.</p>
         </div>
       </div>
       <div class="tm-step">
         <div class="tm-num">3</div>
         <div class="tm-content">
-          <h3>Você recebe o link e começa a usar</h3>
-          <p>Manda para o seu vendedor que já começa a enviar para os clientes orçarem or WhatsApp. É só isso e mais nada.</p>
+          <h3>Vendedores Ágeis, Clientes Retidos:</h3>
+          <p>Mande o link para seu vendedor. Ele agora pode atender vários clientes ao mesmo tempo, mantendo-os interessados e retidos com uma experiência de compra superior.</p>
         </div>
       </div>
     </div>
+    
+    <div class="proc-summary">Apresente quantos produtos quiser, com cotações direto no WhatsApp do vendedor.</div>
   </div>
 </section>
 
-<!-- SEÇÃO 5: PLANO DE IMPLEMENTAÇÃO E CTA FINAL -->
+<!-- SESSÃO 5: FECHAMENTO (ESCURA) -->
 <section id="sec5-cta">
-  <span class="cta-label">PLANO DE IMPLEMENTAÇÃO</span>
-  <h2 class="cta-title">Pronto para se destacar<br>e vender mais rápido?</h2>
-  <p class="cta-sub">Fale conosco para avaliar o modelo ideal para a sua madeireira e descubra como colocar seu catálogo no ar de forma simples e direta.</p>
+  <h2 class="cta-title font-head">Pronto para vender mais rápido e parar de fazer leilão?</h2>
+  <p class="cta-sub">Receba orçamentos centralizados no chat, com uma interface limpa e busca rápida por categorias. Seus clientes vão amar, seus vendedores vão agradecer.</p>
   
-  <ul class="cta-list">
-    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Catálogo com todos os seus produtos do portfólio</li>
-    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Identidade visual e número de WhatsApp integrados</li>
-    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Interface limpa e busca rápida por categorias</li>
-    <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Recebimento de orçamentos centralizados no chat</li>
-  </ul>
-  
-  <br>
   <a href="https://wa.me/5585989020848" class="btn-wa-final">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-359:     Solicitar orçamento via WhatsApp
+    💬 Iniciar Atendimento via WhatsApp
   </a>
 </section>
 
@@ -370,44 +377,31 @@ footer { text-align: center; padding: 3rem 1.25rem; font-size: 13px; color: rgba
 
   // Animação Inicial (Somente Seção 1)
   const tlBase = gsap.timeline();
-  tlBase.from(".badges-wreath", { y: -20, opacity: 0, duration: 1, ease: "power3.out", delay: 0.2 })
-        .from("#sec1-hero h1", { y: 30, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.6")
-        .from(".grad-text", { scale: 0.95, opacity: 0, duration: 1, ease: "back.out(1.5)" }, "-=0.7")
-        .from(".hero-bullets li", { x: -20, opacity: 0, duration: 0.6, stagger: 0.15, ease: "power2.out" }, "-=0.4")
-        .from(".btn-gradient-super", { y: 20, opacity: 0, duration: 0.8, ease: "power2.out" }, "-=0.4");
+  tlBase.from(".badges-wreath", { y: -20, opacity: 0, duration: 1, ease: "power3.out", delay: 0.1 })
+        .from("#sec1-hero h1", { y: 30, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.6");
+  // O botão principal foi removido da timeline para garantir que carregue estático 100% das vezes e evite bug de invisibilidade.
 
-  // Animação da Esteira de Categorias (Scrub vinculada ao Scroll)
-  gsap.to(".marquee-container", {
-    x: () => -(document.querySelector('.marquee-container').scrollWidth - window.innerWidth + 100),
-    ease: "none",
-    scrollTrigger: {
-      trigger: "#sec2-trilho",
-      start: "top bottom",
-      end: "bottom top",
-      scrub: 1.5
-    }
+  // Animação Seção de Dor (1B)
+  gsap.from(".dor-kicker, .dor-title", {
+    scrollTrigger: { trigger: "#sec1b-dor", start: "top 80%" },
+    y: 30, opacity: 0, duration: 1, stagger: 0.2, ease: "power2.out"
+  });
+  gsap.from(".dor-blockquote p", {
+    scrollTrigger: { trigger: ".dor-blockquote", start: "top 85%" },
+    x: -30, opacity: 0, duration: 0.8, stagger: 0.2, ease: "power2.out"
   });
 
-  gsap.to(".cat-icon-wrap", {
-    rotation: -360,
-    ease: "none",
-    scrollTrigger: {
-      trigger: "#sec2-trilho",
-      start: "top bottom",
-      end: "bottom top",
-      scrub: 1.5
-    }
-  });
+  // A animação da esteira agora é 100% CSS puro para Deslizar de forma Contínua da Direita para Esquerda.
 
   // Animação Card de Vídeo (Seção 3)
-  gsap.from(".video-wrapper", {
-    scrollTrigger: { trigger: "#sec3-video", start: "top 80%" },
-    y: 50, opacity: 0, rotationX: 10, scale: 0.95, duration: 1.2, ease: "power3.out"
-  });
-
   gsap.from(".sec3-titles h2, .sec3-titles p", {
     scrollTrigger: { trigger: ".sec3-titles", start: "top 85%" },
     y: 30, opacity: 0, duration: 1, stagger: 0.2, ease: "power2.out"
+  });
+  
+  gsap.from(".video-wrapper", {
+    scrollTrigger: { trigger: ".video-wrapper", start: "top 80%" },
+    y: 50, opacity: 0, rotationX: 10, scale: 0.95, duration: 1.2, ease: "power3.out"
   });
 
   // Timeline (Seção 4)
