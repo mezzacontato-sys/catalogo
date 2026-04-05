@@ -134,21 +134,35 @@ def gerar(nome_empresa, whatsapp, csv_path, logo_url=""):
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(html)
 
-    # ── Resultado ─────────────────────────────────────────────
+    print(f"\nCatalogo gerado: {output_file}")
+    print(f"Subindo para o ar automaticamente...\n")
+
+    # ── Git: add, commit, push ────────────────────────────────
+    import subprocess
+
+    def git(args, desc):
+        result = subprocess.run(["git"] + args, capture_output=True, text=True)
+        if result.returncode != 0:
+            print(f"ERRO em '{desc}':\n{result.stderr.strip()}")
+            sys.exit(1)
+        return result.stdout.strip()
+
+    git(["add", f"catalogos/{slug}/"], "git add")
+    git(["commit", "-m", f"add: catalogo {nome_empresa}"], "git commit")
+    git(["push"], "git push")
+
+    # ── Resultado final ───────────────────────────────────────
+    url = f"{VERCEL_URL}/catalogos/{slug}/"
     print(f"""
-✅ Catálogo gerado com sucesso!
+Catalogo no ar!
    Empresa  : {nome_empresa}
    WhatsApp : {whatsapp}
    Produtos : {len(produtos_js)}
-   Arquivo  : {output_file}
 
-📋 Próximos passos:
-   1. git add catalogos/{slug}/
-   2. git commit -m "add: catálogo {nome_empresa}"
-   3. git push
+URL do cliente:
+   {url}
 
-🔗 URL do cliente (após push):
-   {VERCEL_URL}/catalogos/{slug}/
+Aguarde ~30 segundos para a Vercel terminar o deploy, depois envie o link.
 """)
 
 
