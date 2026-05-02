@@ -1,0 +1,59 @@
+id,nome,categoria,subcategoria,descricao,unidade,destaque,ativo,foto_arquivo,badge,fotos_extras
+1,Porta Londres,Portas,Sólidas,A mais vendida da linha sólida. Design premium que se adapta a qualquer ambiente.,un,sim,sim,porta-solida-londres.jpg,,folha londres.jpg
+2,Porta Tabicão,Portas,Sólidas,Porta com tabuletas que facilitam limpeza e garantem boa ventilação.,un,sim,sim,porta-solida-tabicao.png,,Porta Tabicao Aberto.jpg|Porta Tabicao Fechado.jpg
+3,Porta Lateral Colmeia,Portas,Sólidas,Porta sólida com laterais em colmeia para maior ventilação e estilo.,un,sim,sim,porta-solida-Lateral Colmeia.jpg,,
+4,Porta 2 em 1,Portas,Sólidas,Design versátil com dois estilos em uma única folha.,un,sim,sim,porta-solida-2em1.png,,
+5,Porta Ripada,Portas,Sólidas,Design moderno com ripas verticais e puxador preto. O modelo mais arrojado da linha.,un,sim,sim,Ripada Folha.jpg,mais-vendido,Ripada Com Puxador.jpg|Ripada Simulacao.jpg
+6,Porta Ondulada,Portas,Sólidas,Porta artesanal com entalhes ondulados que formam um padrão único e exclusivo.,un,sim,sim,Porta Ondulada.jpg,,Porta Ondulada Simulação.png
+7,Porta Almofada Arqueada,Portas,Sólidas,Porta clássica com 15 almofadas e arco superior. Elegância atemporal.,un,sim,sim,almofada arqueada.png,,almofada arqueada simulaçao.png
+8,Porta Almofada Sacada,Portas,Sólidas,Porta com almofadas sacadas em relevo. Acabamento nobre e imponente.,un,sim,sim,almofada sacada.jpg,,
+9,Porta Trabalhada Flor,Portas,Sólidas,Porta exclusiva com entalhes florais esculpidos em 3 painéis. Peça artesanal.,un,sim,sim,trabalhada flor.jpg,,
+10,Porta Itaparica,Portas,Sólidas,Porta com 4 almofadas curvas em arco assimétrico. Referência em elegância.,un,sim,sim,itaparica.jpg,,
+11,Porta Magna,Portas,Sólidas,Porta com frisos diagonais modernos. Diferencial absoluto no acabamento.,un,sim,sim,magna.jpg,,
+12,Porta Londres 2 Vidros,Portas,Sólidas,Versão da Londres com 2 vidros centrais. Ideal para ambientes que pedem mais luz.,un,sim,sim,Londres 2 Vidros.jpg,,
+13,Porta Londres c/ Laterais Veneziana,Portas,Sólidas,Conjunto porta Londres com 2 vidros e 2 laterais fixas em veneziana.,cj,sim,sim,Londe 2 Vidros 2 Laterais Veneziana.jpg,,Londe 2 Vidros 2 Laterais Veneziana Simulaçao.png
+14,Porta c/ Passagem para PET,Portas,Sólidas,Porta com abertura para PET na parte inferior. Prática e funcional.,un,sim,sim,Porta com Passagem para PET.jpg,,
+15,Portão de Madeira,Portões,Rústico,Portão robusto estilo celeiro com ferragens de ferro. Ideal para garagem.,un,sim,sim,Portao de Madeira.jpg,,Portao de Madeira Simulaçao.png
+16,Porta Putiti,Portas,Sólidas,Porta com colmeia arqueada superior e vidros. Design clássico e requintado.,un,sim,sim,Putiti.jpg,,Putit Simulaçao.png
+17,Porta Tabicão Horizontal,Portas,Sólidas,Porta com tabicão na horizontal para um visual contemporâneo e clean.,un,sim,sim,por.jpg,,
+18,Porta Veneziana Dupla,Portas,Sólidas,Porta dupla com veneziana em toda a extensão. Ideal para ambientes externos.,cj,sim,sim,por2.jpg,,
+19,Porta Tabicão c/ Lateral Veneziana,Portas,Sólidas,Porta com padrão tabicão central e laterais fixas veneziana. Ventilação superior.,un,sim,sim,por4.jpg,,
+20,Porta Nobre em Teca,Portas,Sólidas,Porta trabalhada em madeira teca com 3 painéis diferenciados. Alta durabilidade.,un,sim,sim,por5.jpg,,
+21,Porta Tabicão c/ Vidro e Lateral,Portas,Sólidas,Porta tabicão com vidro central e lateral veneziana em teca maciça.,un,sim,sim,por7.jpg,,
+22,Porta Colmeia Quadrada em Teca,Portas,Sólidas,Porta rústica com almofadas quadradas em teca maciça bruta.,un,sim,sim,por 13.jpg,,
+23,Porta Ficha,Portas,Sólidas,Porta maciça em réguas verticais de madeira. Rústica e resistente à umidade.,un,sim,sim,ficha.jpg,,
+24,Porta Paraná,Portas,Semi-Sólidas,Porta de entrada da linha semi-sólida. Estrutura leve com bom isolamento acústico.,un,sim,sim,porta-semi-solida-parana.jpg,,
+25,Porta Copaíba,Portas,Semi-Sólidas,Superior à Paraná em preenchimento e resistência. Melhor custo-benefício da linha.,un,sim,sim,porta-semi-solida-copaiba.jpg,,
+26,Porta Naval,Portas,Semi-Sólidas,Resistente à umidade e pronta para receber tinta. A preferida para áreas molhadas.,un,sim,sim,porta-semi-solida-naval.jpg,mais-vendido,
+27,Porta Colmeia Almofada,Portas,Colmeia,Porta colmeia com almofada central arqueada. Tradição e funcionalidade em um só produto.,un,sim,sim,Colmeia Almofada.jpg,,
+28,Porta Colmeia Reta,Portas,Colmeia,Porta colmeia clássica com grades quadradas. Alta ventilação e elegância.,un,sim,sim,Colmeia Reta.jpg,,
+29,Porta Colmeia c/ Veneziana,Portas,Colmeia,Porta colmeia com veneziana na metade inferior. Equilíbrio de luz e privacidade.,un,sim,sim,Colméia C Veneziana.jpg,,
+30,Porta Colmeia Trabalhada c/ Almofada,Portas,Colmeia,Porta colmeia elaborada com almofada central. Acabamento diferenciado e nobre.,un,sim,sim,Colméia Trabalhada Reta c Almofada.jpg,,
+31,Porta Colmeia c/ Vidro,Portas,Colmeia,Porta colmeia com vidros fixos na parte superior. Luz e ventilação ao mesmo tempo.,un,sim,sim,Colmeia com Vidro.jpg,,Colmeia com Vidro Simulação.png
+32,Porta Colmeia Reta Correr,Portas,Colmeia,Porta colmeia 4 folhas tipo correr. Ideal para grandes vãos.,cj,sim,sim,Colmeia Reta Correr.jpg,,Colmeia Reta Almofada Correr.jpg|Colmeia Reta Correr Simulação.png|Colmeia Reta Almofada Correr Simulação.png
+33,Janela Veneziana,Janelas,Veneziana,Janela veneziana clássica com colmeia central. Muito ventilada e durável.,un,sim,sim,Janela Colmeia com Veneziana.jpg,,Janela Colmeia com Veneziana Simulaçao.png
+34,Janela Colmeia Pivotante,Janelas,Pivotante,Janela colmeia com abertura pivotante. Ventilação máxima e fácil limpeza.,un,sim,sim,Janela Colmeia Pivotante.jpg,,
+35,Janela Colmeia Tabicão,Janelas,Colmeia,Janela colmeia com tabicão deslizante. Controle total da entrada de ar.,un,sim,sim,Janela Colmeia Tabicao Fechada.jpg,,Janela Colmeia Tabicao Aberta.jpg|Janela Colmeia Tabicao Aberta Simulaçao.png
+36,Janela com Arco,Janelas,Especial,Janela com acabamento em arco central. Design nobre para fachadas distintas.,un,sim,sim,Janela Com arco.jpg,,Janela Com arco Simulaçao.png
+37,Janela Europeia,Janelas,Europeia,Janela 4 folhas com abertura guilhotina. Sofisticação e vedação impecável.,cj,sim,sim,Janela Europeia 1.jpg,,Janela Europeia 2.jpg|jane 8.jpg|Janela Europeia Simulação.png
+38,Janela Pivotante,Janelas,Pivotante,Janela pivotante com 4 quadrados. Ventilação precisa e design contemporâneo.,un,sim,sim,Janela Pivotante Fechada.jpg,,Janela Pivotante Aberta.jpg|Janela Pivotante Aberta Simulaçao.png
+39,Mesanino Max Ar,Janelas,Mesanino,Janela tipo maxim-ar com 4 quadros. Entrada de ar com proteção contra chuva.,un,sim,sim,Mesanino Max Ar.jpg,,
+40,Mesanino Pivotante,Janelas,Mesanino,Janela mesanino pivotante com abertura total. Ventilação máxima para qualquer ambiente.,un,sim,sim,Mesanino Pivotante.jpg,,
+41,Brisa Bandeirola,Janelas,Bandeirola,Janela bandeirola dupla com veneziana. Instalada acima de portas e janelas.,un,sim,sim,Brisa Bandeirola.jpg,,
+42,Janela Colmeia Tabicão Deslizante,Janelas,Colmeia,Janela com folha colmeia e folha tabicão deslizante. Versátil e funcional.,un,sim,nao,janela 12.jpg,,
+43,Janela Tabicão 4 Bandas,Janelas,Tabicão,Janela tabicão com 4 folhas. Alta durabilidade e ampla ventilação.,cj,sim,sim,tabicao 4 bandas.jpg,,Tabicao 4 bandas aberto.jpg|tabicao 4 bandas de lado.jpg|Tabicao 4 bandas aberto simulaçao.png
+44,Janela Tabicão Correr,Janelas,Tabicão,Janela tabicão 4 folhas tipo correr em teca. Robustez e durabilidade.,cj,sim,sim,jan.jpg,,
+45,Janela Colmeia 3 Folhas,Janelas,Colmeia,Janela colmeia com 3 folhas. Ideal para salas e quartos com vãos grandes.,cj,sim,sim,colmeia2.png,,
+46,Concrem Branca,Concrem,Revestida,Porta concrem em branco com acabamento impecável. Pronta para instalar.,un,sim,sim,Concrem Branca.jpg,,Concrem Branca Simulação.jpg
+47,Concrem Cinza,Concrem,Revestida,Porta concrem em cinza moderno. Acabamento uniforme e contemporâneo.,un,sim,sim,Concrem Cinza.jpg,,Concrem Cinza Simulação.jpg
+48,Revestida 2 Frisos,Concrem,Revestida,Porta revestida com 2 frisos horizontais. Design minimalista e sofisticado.,un,sim,sim,Revestida 2 Frisos.jpg,,Revestida 2 Frisos Simulaçao.jpg
+49,Revestida 4 Frisos,Concrem,Revestida,Porta revestida com 4 frisos horizontais. O detalhe linear que transforma o ambiente.,un,sim,sim,Revestida 4 Frisos.jpg,,Revestida 4 Frisos Simulação.png
+50,Porta Tijolinho,Concrem,Especial,Porta com entalhes em relevo estilo tijolinho. Design rústico e artesanal.,un,sim,sim,tijolinho.jpg,,
+51,Mesa Cascata,Móveis,Mesa,Mesa em madeira maciça com pé em tronco rústico. Peça única e exclusiva.,un,sim,sim,Mesa Cascata.jpg,,
+52,Conjunto Mesa Redonda,Móveis,Mesa,Mesa redonda giratória com 6 cadeiras em madeira maciça.,cj,sim,sim,Conjunto mesa Redonda.jpg,,
+53,Mesa Madeira Angelim,Móveis,Mesa,Mesa de madeira angelim com bancos laterais. Resistente e ideal para área externa.,cj,sim,sim,Mesa Madeira Angelim.jpg,,Mesa Madeira Angelim simulaçao.png
+54,Cadeira de Balanço,Móveis,Cadeira,Cadeira de balanço em madeira maciça. Conforto e charme para qualquer espaço.,un,sim,sim,Cadeira de Balanço.jpg,,
+55,Forramento,Outros,Forramento,Forramento de madeira para batentes e marcos. Acabamento profissional na instalação.,m²,sim,sim,Forramento.png,,Forramento montado.png
+56,Lambri,Outros,Lambri,Lambri de madeira para forro e revestimento. Instalação simples com resultado premium.,m²,sim,sim,lambri (21).jpg,,
+57,Madeirite Plastificado,Outros,Madeirite,Madeirite plastificado resistente à umidade. Ideal para construção e acabamento.,m²,sim,sim,madeirite plastificado.png,,
+58,Porta Revista,Portas,Sólidas,Porta sólida com design clássico e acabamento refinado. Uma das mais requisitadas da linha.,un,sim,sim,Revista.jpg,,
