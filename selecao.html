@@ -328,10 +328,10 @@ document.body.style.overflow = 'hidden';
 // CARREGAMENTO DO CSV
 // ════════════════════════════════════
 function carregarProdutos() {
-  fetch('/catalogo_produtos.csv')
+  fetch('/catalogo_produtos_base.csv')
     .then(function(r) { return r.arrayBuffer(); })
     .then(function(buf) {
-      PRODUCTS = parsearCSV(decodificar(buf)).filter(function(p) { return p.ativo === 'sim'; });
+      PRODUCTS = parsearCSV(decodificar(buf)).filter(function(p) { return p.ativo === '1' || p.ativo === 'sim'; });
       document.getElementById('loading').style.display = 'none';
       document.getElementById('filter-bar').style.display = '';
       document.getElementById('rbar').style.display = '';
