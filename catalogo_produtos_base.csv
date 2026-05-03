@@ -1,6 +1,6 @@
 id,nome,categoria,subcategoria,descricao,unidade,destaque,ativo,foto_arquivo,badge,fotos_extras
-1,Porta Londres,Portas,Sólidas,A mais vendida da linha sólida. Design premium que se adapta a qualquer ambiente.,un,sim,sim,porta-solida-londres.jpg,,folha londres.jpg
-2,Porta Tabicão,Portas,Sólidas,Porta com tabuletas que facilitam limpeza e garantem boa ventilação.,un,sim,sim,porta-solida-tabicao.png,,Porta Tabicao Aberto.jpg|Porta Tabicao Fechado.jpg
+1,Porta Londres,Portas,Sólidas,A mais vendida da linha sólida. Design premium que se adapta a qualquer ambiente.,un,sim,sim,folha londres.jpg,,porta londres simulacao.png
+2,Porta Tabicão,Portas,Sólidas,Porta com tabuletas que facilitam limpeza e garantem boa ventilação.,un,sim,sim,porta tabicao nova.png,,porta tabicao nova aberta.png|porta tabicao simulacao.png
 3,Janela Lateral Colmeia,Janelas,Especial,Porta sólida com laterais em colmeia para maior ventilação e estilo.,un,sim,sim,janela Lateral Colmeia.jpg,,janela-Lateral Colmeia simulacao.png
 4,Porta 2 em 1,Portas,Sólidas,Design versátil com dois estilos em uma única folha.,un,sim,sim,porta-solida-2em1.png,,
 5,Porta Ripada,Portas,Sólidas,Design moderno com ripas verticais e puxador preto. O modelo mais arrojado da linha.,un,sim,sim,Ripada Folha.jpg,mais-vendido,Ripada Com Puxador.jpg|Ripada Simulacao.jpg
@@ -16,8 +16,8 @@ id,nome,categoria,subcategoria,descricao,unidade,destaque,ativo,foto_arquivo,bad
 15,Portão de Madeira,Portões,Rústico,Portão robusto estilo celeiro com ferragens de ferro. Ideal para garagem.,un,sim,sim,Portao de Madeira.jpg,,Portao de Madeira Simulaçao.png
 16,Porta Putiti,Portas,Sólidas,Porta com colmeia arqueada superior e vidros. Design clássico e requintado.,un,sim,sim,Putiti.jpg,,Putit Simulaçao.png
 17,Porta Tabicão Horizontal,Portas,Sólidas,Porta com tabicão na horizontal para um visual contemporâneo e clean.,un,sim,sim,por.jpg,,
-18,Porta Veneziana Dupla,Portas,Sólidas,Porta dupla com veneziana em toda a extensão. Ideal para ambientes externos.,cj,sim,sim,por2.jpg,,
-19,Porta Tabicão c/ Lateral Veneziana,Portas,Sólidas,Porta com padrão tabicão central e laterais fixas veneziana. Ventilação superior.,un,sim,sim,por4.jpg,,
+18,Porta Veneziana Dupla,Portas,Sólidas,Porta dupla com veneziana em toda a extensão. Ideal para ambientes externos.,cj,sim,nao,por2.jpg,,
+19,Porta Tabicão c/ Lateral Veneziana,Portas,Sólidas,Porta com padrão tabicão central e laterais fixas veneziana. Ventilação superior.,un,sim,nao,por4.jpg,,
 20,Porta Nobre em Teca,Portas,Sólidas,Porta trabalhada em madeira teca com 3 painéis diferenciados. Alta durabilidade.,un,sim,sim,por5.jpg,,
 21,Porta Tabicão c/ Vidro e Lateral,Portas,Sólidas,Porta tabicão com vidro central e lateral veneziana em teca maciça.,un,sim,sim,por7.jpg,,
 22,Porta Londres 1 Vidro,Portas,Sólidas,Porta Londres com vidro central. Beleza clássica com entrada de luz natural.,un,sim,sim,Londres 1 Vidro.jpg,,Londres 1 Vidro simulacao.png
