@@ -10,6 +10,12 @@ Uso:
 Exemplos:
   python gerar.py "Madeireira São João" "11999999999" "selecao.csv"
   python gerar.py "Madeireira São João" "11999999999" "selecao.csv" "https://i.imgur.com/logo.png"
+
+  Com logo e cor:
+  python gerar.py "Madeireira São João" "11999999999" "selecao.csv" "/fotos/logos/logo-joao.png" "#2D5016"
+
+  A logo deve estar na pasta fotos/logos/ (ou ser uma URL externa).
+  A cor é um código hex — ex: #2D5016 (verde), #8B1A1A (vinho), #1A3A5C (azul).
 """
 
 import csv
@@ -49,7 +55,7 @@ def ler_csv(caminho):
     return []
 
 
-def gerar(nome_empresa, whatsapp, csv_path, logo_url=""):
+def gerar(nome_empresa, whatsapp, csv_path, logo_url="", cor="#111"):
     # ── Validações ────────────────────────────────────────────
     if not TEMPLATE_PATH.exists():
         print(f"\nERRO: Template não encontrado em '{TEMPLATE_PATH}'")
@@ -126,6 +132,19 @@ def gerar(nome_empresa, whatsapp, csv_path, logo_url=""):
         html
     )
 
+    # ── Injetar cor personalizada ─────────────────────────────
+    if cor and cor != "#111":
+        style = (
+            f'<style id="cor-cliente">'
+            f'.chip.active,.sub-chip.active{{background:{cor}!important;border-color:{cor}!important}}'
+            f'.chip:hover,.sub-chip:hover{{border-color:{cor}!important;color:{cor}!important}}'
+            f'.card-add{{background:{cor}!important}}'
+            f'#search{{border-color:{cor}!important}}'
+            f'#cart-badge{{background:{cor}!important}}'
+            f'</style>'
+        )
+        html = html.replace('</head>', style + '\n</head>', 1)
+
     # ── Substituir PRODUCTS (pode ter base64 enorme) ──────────
     marker_inicio = 'var PRODUCTS = ['
     marker_fim    = '];'
@@ -191,9 +210,10 @@ if __name__ == "__main__":
     tel   = re.sub(r'\D', '', sys.argv[2])   # remove tudo que não é número
     arq   = sys.argv[3]
     logo  = sys.argv[4] if len(sys.argv) > 4 else ""
+    cor   = sys.argv[5] if len(sys.argv) > 5 else "#111"
 
     # Garantir DDI 55 (Brasil)
     if not tel.startswith('55'):
         tel = '55' + tel
 
-    gerar(nome, tel, arq, logo)
+    gerar(nome, tel, arq, logo, cor)
