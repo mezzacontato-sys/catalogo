@@ -125,25 +125,42 @@ def gerar(nome_empresa, whatsapp, csv_path, logo_url="", cor="#111"):
         html
     )
 
-    # ── Substituir LOGO_URL ───────────────────────────────────
+    # ── Normalizar LOGO_URL ───────────────────────────────────
+    # Se for caminho local (não URL http), extrai a parte a partir de "fotos/"
+    if logo_url and not logo_url.startswith('http'):
+        logo_norm = logo_url.replace('\\', '/')
+        idx = logo_norm.find('fotos/')
+        if idx >= 0:
+            logo_url = '/' + logo_norm[idx:]
+        elif not logo_url.startswith('/'):
+            logo_url = '/' + logo_norm
+
     html = re.sub(
         r'var LOGO_URL\s*=\s*"[^"]*"',
         f'var LOGO_URL     = "{logo_url}"',
         html
     )
 
+    # ── Substituir texto do banner ────────────────────────────
+    html = re.sub(
+        r'<div id="banner">[^<]*</div>',
+        f'<div id="banner">{nome_empresa}</div>',
+        html
+    )
+
     # ── Injetar cor personalizada ─────────────────────────────
-    if cor and cor != "#111":
-        style = (
-            f'<style id="cor-cliente">'
-            f'.chip.active,.sub-chip.active{{background:{cor}!important;border-color:{cor}!important}}'
-            f'.chip:hover,.sub-chip:hover{{border-color:{cor}!important;color:{cor}!important}}'
-            f'.card-add{{background:{cor}!important}}'
-            f'#search{{border-color:{cor}!important}}'
-            f'#cart-badge{{background:{cor}!important}}'
-            f'</style>'
-        )
-        html = html.replace('</head>', style + '\n</head>', 1)
+    cor_base = cor if cor and cor != "#111" else "#111"
+    style = (
+        f'<style id="cor-cliente">'
+        f'#banner{{background:{cor_base}!important}}'
+        f'.chip.active,.sub-chip.active{{background:{cor_base}!important;border-color:{cor_base}!important}}'
+        f'.chip:hover,.sub-chip:hover{{border-color:{cor_base}!important;color:{cor_base}!important}}'
+        f'.card-add{{background:{cor_base}!important}}'
+        f'#search{{border-color:{cor_base}!important}}'
+        f'#cart-badge{{background:{cor_base}!important}}'
+        f'</style>'
+    )
+    html = html.replace('</head>', style + '\n</head>', 1)
 
     # ── Substituir PRODUCTS (pode ter base64 enorme) ──────────
     marker_inicio = 'var PRODUCTS = ['
