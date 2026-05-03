@@ -357,8 +357,12 @@ function carregarProdutosRevisao(encoded) {
 }
 
 function decodificar(buf) {
+  // Tenta UTF-8 primeiro (arquivo base é salvo em UTF-8)
+  var utf8 = new TextDecoder('utf-8').decode(buf);
+  if (utf8.indexOf('�') === -1) return utf8;
+  // Fallback para Windows-1252 (CSVs exportados do Excel)
   try { return new TextDecoder('windows-1252').decode(buf); }
-  catch(e) { return new TextDecoder('utf-8').decode(buf); }
+  catch(e) { return utf8; }
 }
 
 function parsearCSV(texto) {
@@ -462,12 +466,26 @@ function renderizar() {
         '</select>' +
       '</div>';
 
-    // Badge change
-    card.querySelector('select').onchange = function(e) {
-      e.stopPropagation();
-      if (selecionados[id]) selecionados[id].badge = this.value;
-      renderizar();
-    };
+    // Badge change — atualiza só o badge visual, sem recriar o grid
+    card.querySelector('select').onchange = (function(cardEl, pid) {
+      return function(e) {
+        e.stopPropagation();
+        if (!selecionados[pid]) return;
+        selecionados[pid].badge = this.value;
+        // Atualiza badge visual no card
+        var old = cardEl.querySelector('.badge');
+        if (old) old.remove();
+        if (this.value === 'mais-vendido') {
+          var b = document.createElement('div');
+          b.className = 'badge mais-vendido'; b.textContent = 'Mais vendido';
+          cardEl.insertBefore(b, cardEl.firstChild);
+        } else if (this.value === 'promocao') {
+          var b = document.createElement('div');
+          b.className = 'badge promocao'; b.textContent = 'Promoção';
+          cardEl.insertBefore(b, cardEl.firstChild);
+        }
+      };
+    })(card, id);
 
     // Clique para selecionar
     ['card-img-wrap', 'card-check', 'card-info'].forEach(function(cls) {
@@ -479,11 +497,33 @@ function renderizar() {
   });
 }
 
+function atualizarContadores() {
+  var numSel = Object.keys(selecionados).length;
+  var prods = catAtiva === 'Todos'
+    ? PRODUCTS
+    : PRODUCTS.filter(function(p) { return p.categoria.trim() === catAtiva; });
+  document.getElementById('count').textContent = prods.length + ' produto' + (prods.length !== 1 ? 's' : '');
+  document.getElementById('selected-count').textContent = numSel > 0 ? numSel + ' selecionado' + (numSel !== 1 ? 's' : '') : '';
+  document.getElementById('fab').classList.toggle('show', numSel > 0);
+  document.getElementById('fab-count').textContent = numSel;
+}
+
 function toggleSelecionado(id) {
   var p = PRODUCTS.find(function(x) { return x.id === id; });
   if (selecionados[id]) { delete selecionados[id]; }
   else { selecionados[id] = { produto: p, badge: '' }; }
-  renderizar();
+  // Atualiza só o card clicado — sem reconstruir o grid inteiro
+  var isSel = !!selecionados[id];
+  var card = document.querySelector('.card[data-id="' + id + '"]');
+  if (card) {
+    card.classList.toggle('selected', isSel);
+    if (!isSel) {
+      // Limpa badge ao desmarcar
+      var sel = card.querySelector('select'); if (sel) sel.value = '';
+      var b = card.querySelector('.badge'); if (b) b.remove();
+    }
+  }
+  atualizarContadores();
 }
 
 // ════════════════════════════════════
@@ -511,11 +551,21 @@ function abrirModal() {
           '<div class="modal-item-badge">' + badgeTexto + '</div>' +
         '</div>' +
         '<button class="modal-item-remove">&#215;</button>';
-      div.querySelector('.modal-item-remove').onclick = function() {
-        delete selecionados[id];
-        renderizar();
-        abrirModal();
-      };
+      div.querySelector('.modal-item-remove').onclick = (function(itemEl, pid) {
+        return function() {
+          delete selecionados[pid];
+          itemEl.remove();
+          // Desmarca card no grid sem recriar tudo
+          var card = document.querySelector('.card[data-id="' + pid + '"]');
+          if (card) card.classList.remove('selected');
+          atualizarContadores();
+          // Fecha modal se ficou vazio
+          if (!Object.keys(selecionados).length) {
+            fecharModal();
+            document.getElementById('btn-concluir').disabled = true;
+          }
+        };
+      })(div, id);
       lista.appendChild(div);
     });
   }
