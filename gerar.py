@@ -197,7 +197,8 @@ def gerar(nome_empresa, whatsapp, csv_path, logo_url="", cor="#111"):
             sys.exit(1)
         return result.stdout.strip()
 
-    git(["add", f"catalogos/{slug}/"], "git add")
+    git(["add", f"catalogos/{slug}/"], "git add catalogo")
+    git(["add", "fotos/logos/"], "git add logos")   # garante que logos novas sobem
     git(["commit", "-m", f"add: catalogo {nome_empresa}"], "git commit")
     git(["push"], "git push")
 
