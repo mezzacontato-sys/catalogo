@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hate It or Love It — Motion Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #000;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      font-family: 'Bebas Neue', 'Impact', sans-serif;
+    }
+
+    #bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Scanlines overlay */
+    #bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 3px,
+        rgba(0,0,0,0.12) 3px,
+        rgba(0,0,0,0.12) 4px
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    #stage {
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+    }
+
+    .word {
+      position: absolute;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      line-height: 1;
+      white-space: nowrap;
+      opacity: 0;
+      left: 50%;
+      will-change: transform, opacity;
+      user-select: none;
+    }
+
+    .white  { color: #ffffff; text-shadow: 0 0 40px rgba(255,255,255,0.25); }
+    .red    { color: #e63946; text-shadow: 0 0 30px rgba(230,57,70,0.6), 0 2px 0 rgba(0,0,0,0.8); }
+    .gold   { color: #c9a227; text-shadow: 0 0 30px rgba(201,162,39,0.7), 0 2px 0 rgba(0,0,0,0.8); }
+    .shine  { color: #fff700; text-shadow: 0 0 20px #fff700, 0 0 50px #ffd000, 0 0 90px #ff8c00, 0 2px 0 rgba(0,0,0,0.9); }
+
+    /* -------- Overlay inicial -------- */
+    #overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      transition: opacity 0.4s;
+    }
+
+    #overlay-title {
+      font-size: clamp(32px, 7vw, 90px);
+      letter-spacing: 0.12em;
+      color: #c9a227;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1;
+    }
+
+    #overlay-sub {
+      font-family: 'Arial Narrow', Arial, sans-serif;
+      font-size: clamp(10px, 1.4vw, 16px);
+      letter-spacing: 0.3em;
+      color: #555;
+      text-transform: uppercase;
+    }
+
+    #play-btn {
+      margin-top: 20px;
+      background: transparent;
+      border: 2px solid #c9a227;
+      color: #c9a227;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(18px, 2.5vw, 28px);
+      letter-spacing: 0.25em;
+      padding: 14px 56px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    #play-btn:hover { background: #c9a227; color: #000; }
+
+    #replay-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 15;
+      background: transparent;
+      border: 1px solid #333;
+      color: #444;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.2em;
+      padding: 8px 22px;
+      cursor: pointer;
+      display: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    #replay-btn:hover { border-color: #c9a227; color: #c9a227; }
+
+    #credit {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 15;
+      font-family: 'Arial Narrow', Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: #222;
+      text-transform: uppercase;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+<div id="stage"></div>
+
+<div id="overlay">
+  <div id="overlay-title">Hate It or Love It</div>
+  <div id="overlay-sub">The Game ft. 50 Cent &nbsp;·&nbsp; Motion Design</div>
+  <button id="play-btn" onclick="start()">▶&nbsp; PLAY</button>
+</div>
+
+<button id="replay-btn" onclick="replay()">↺ &nbsp;REPLAY</button>
+<div id="credit">The Game ft. 50 Cent — Hate It or Love It (2005)</div>
+
+<script>
+// ─────────────────────────────────────────────
+//  CANVAS BACKGROUND  (gradient + beat flash)
+// ─────────────────────────────────────────────
+const canvas = document.getElementById('bg');
+const ctx    = canvas.getContext('2d');
+let beatPulse = 0;
+
+function resize() {
+  canvas.width  = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
+
+function drawBg() {
+  const w = canvas.width, h = canvas.height;
+  const pulse = Math.max(0, beatPulse);
+
+  // Warm radial base
+  const g = ctx.createRadialGradient(w * 0.5, h * 0.5, 0, w * 0.5, h * 0.5, Math.hypot(w, h) * 0.55);
+  g.addColorStop(0, `rgb(${20 + pulse * 60}, ${10 + pulse * 18}, ${0})`);
+  g.addColorStop(0.5, `rgb(${8 + pulse * 15}, ${4}, 0)`);
+  g.addColorStop(1,  '#000000');
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, w, h);
+
+  // Gold flash overlay
+  if (pulse > 0) {
+    ctx.fillStyle = `rgba(201,162,39,${pulse * 0.07})`;
+    ctx.fillRect(0, 0, w, h);
+  }
+
+  beatPulse = Math.max(0, beatPulse - 0.055);
+  requestAnimationFrame(drawBg);
+}
+drawBg();
+
+function pulse() { beatPulse = 1.0; }
+
+// ─────────────────────────────────────────────
+//  ELEMENT FACTORY
+// ─────────────────────────────────────────────
+const stage = document.getElementById('stage');
+let timers   = [];
+
+function el(text, colorClass, sizePct, topPct) {
+  const d = document.createElement('div');
+  d.className = 'word ' + colorClass;
+  d.style.fontSize = sizePct;
+  d.style.top      = topPct;
+  d.textContent    = text;
+  stage.appendChild(d);
+  return d;
+}
+
+function clear() { stage.innerHTML = ''; }
+
+// ─────────────────────────────────────────────
+//  ANIMATIONS
+//  Pattern: set initial state → reflow → transition to final
+// ─────────────────────────────────────────────
+function fromLeft(d, dur = 280) {
+  d.style.transition = 'none';
+  d.style.transform  = 'translate(calc(-50% - 120vw), -50%)';
+  d.style.opacity    = '1';
+  d.getBoundingClientRect(); // force reflow
+  d.style.transition = `transform ${dur}ms cubic-bezier(0.1, 0, 0.05, 1)`;
+  d.style.transform  = 'translate(-50%, -50%)';
+}
+
+function fromRight(d, dur = 280) {
+  d.style.transition = 'none';
+  d.style.transform  = 'translate(calc(-50% + 120vw), -50%)';
+  d.style.opacity    = '1';
+  d.getBoundingClientRect();
+  d.style.transition = `transform ${dur}ms cubic-bezier(0.1, 0, 0.05, 1)`;
+  d.style.transform  = 'translate(-50%, -50%)';
+}
+
+function punch(d, dur = 220) {
+  d.style.transition = 'none';
+  d.style.transform  = 'translate(-50%, -50%) scale(0.25)';
+  d.style.opacity    = '0';
+  d.getBoundingClientRect();
+  d.style.transition = `transform ${dur}ms cubic-bezier(0, 0.6, 0.2, 1.35), opacity ${dur * 0.3}ms`;
+  d.style.transform  = 'translate(-50%, -50%) scale(1)';
+  d.style.opacity    = '1';
+}
+
+function slideUp(d, dur = 220) {
+  d.style.transition = 'none';
+  d.style.transform  = 'translate(-50%, calc(-50% + 50px))';
+  d.style.opacity    = '0';
+  d.getBoundingClientRect();
+  d.style.transition = `transform ${dur}ms ease-out, opacity ${dur}ms ease-out`;
+  d.style.transform  = 'translate(-50%, -50%)';
+  d.style.opacity    = '1';
+}
+
+function zoomOut(d, dur = 320) {
+  d.style.transition = 'none';
+  d.style.transform  = 'translate(-50%, -50%) scale(1.9)';
+  d.style.opacity    = '0.5';
+  d.getBoundingClientRect();
+  d.style.transition = `transform ${dur}ms cubic-bezier(0.1, 0, 0.15, 1), opacity ${dur * 0.4}ms`;
+  d.style.transform  = 'translate(-50%, -50%) scale(1)';
+  d.style.opacity    = '1';
+}
+
+function fadeIn(d, dur = 200) {
+  d.style.transition = 'none';
+  d.style.transform  = 'translate(-50%, -50%)';
+  d.style.opacity    = '0';
+  d.getBoundingClientRect();
+  d.style.transition = `opacity ${dur}ms ease-in`;
+  d.style.opacity    = '1';
+}
+
+function fadeOut(d, dur = 180) {
+  d.style.transition = `opacity ${dur}ms ease-in`;
+  d.style.opacity    = '0';
+}
+
+// ─────────────────────────────────────────────
+//  SCHEDULER
+// ─────────────────────────────────────────────
+function at(ms, fn) {
+  timers.push(setTimeout(fn, ms));
+}
+
+function killAll() {
+  timers.forEach(clearTimeout);
+  timers = [];
+}
+
+// ─────────────────────────────────────────────
+//  TIMELINE  —  90 BPM = 667ms per beat
+//  4 lines × 4 beats = 16 beats total ≈ 10.67s
+// ─────────────────────────────────────────────
+const B = 60000 / 90; // ≈ 667ms
+
+function runTimeline() {
+  clear();
+
+  // ── Beat pulses every beat ──
+  for (let i = 0; i <= 17; i++) {
+    at(B * i, pulse);
+  }
+
+  // ══════════════════════════════════════════
+  // LINE 1 — "Hate it or love it, the underdog's on top"
+  // ══════════════════════════════════════════
+
+  // BEAT 0 — "HATE IT" from left  |  "OR LOVE IT," from right
+  at(0, () => {
+    const hate = el('HATE IT',    'red',  'clamp(40px,12vw,130px)', '40%');
+    const love = el('OR LOVE IT,','gold', 'clamp(40px,12vw,130px)', '62%');
+    fromLeft(hate, 300);
+    fromRight(love, 300);
+  });
+
+  // BEAT 2 — "THE UNDERDOG'S" slides up  |  "ON TOP" punches in
+  at(B * 2, () => {
+    clear();
+    const under = el("THE UNDERDOG'S", 'white', 'clamp(22px,7vw,82px)',  '37%');
+    const top   = el('ON TOP',         'gold',  'clamp(48px,16vw,190px)', '60%');
+    slideUp(under, 220);
+    setTimeout(() => punch(top, 260), 90);
+  });
+
+  // ══════════════════════════════════════════
+  // LINE 2 — "And I'm gon' shine, homie, until my heart stop"
+  // ══════════════════════════════════════════
+
+  // BEAT 4 — "AND I'M GON'"  |  "SHINE,"  |  "HOMIE,"
+  at(B * 4, () => {
+    clear();
+    const gon   = el("AND I'M GON'", 'white', 'clamp(18px,5.5vw,64px)', '30%');
+    const shine = el('SHINE,',       'shine', 'clamp(52px,16vw,200px)', '53%');
+    const homie = el('HOMIE,',       'white', 'clamp(18px,5.5vw,64px)', '74%');
+    slideUp(gon, 200);
+    setTimeout(() => punch(shine, 300), 80);
+    setTimeout(() => slideUp(homie, 200), 180);
+  });
+
+  // BEAT 6 — "UNTIL MY"  |  "HEART STOP"
+  at(B * 6, () => {
+    clear();
+    const until = el('UNTIL MY',   'white', 'clamp(20px,6.5vw,76px)',  '36%');
+    const heart = el('HEART STOP', 'red',   'clamp(44px,14vw,170px)', '58%');
+    slideUp(until, 210);
+    setTimeout(() => punch(heart, 300), 100);
+  });
+
+  // ══════════════════════════════════════════
+  // LINE 3 — "Go 'head, envy me, I'm rap's MVP"
+  // ══════════════════════════════════════════
+
+  // BEAT 8 — "GO 'HEAD,"  from left  |  "ENVY ME," from right
+  at(B * 8, () => {
+    clear();
+    const go   = el("GO 'HEAD,", 'white', 'clamp(30px,9vw,108px)', '38%');
+    const envy = el('ENVY ME,',  'white', 'clamp(30px,9vw,108px)', '62%');
+    fromLeft(go,   290);
+    fromRight(envy, 290);
+  });
+
+  // BEAT 10 — "I'M RAP'S"  |  "MVP" zooms out big gold
+  at(B * 10, () => {
+    clear();
+    const imraps = el("I'M RAP'S", 'white', 'clamp(16px,5vw,58px)',   '30%');
+    const mvp    = el('MVP',       'gold',  'clamp(64px,22vw,270px)', '58%');
+    fadeIn(imraps, 180);
+    setTimeout(() => zoomOut(mvp, 380), 50);
+  });
+
+  // ══════════════════════════════════════════
+  // LINE 4 — "And I ain't going nowhere, so you can get to know me"
+  // ══════════════════════════════════════════
+
+  // BEAT 12 — "AND I AIN'T"  |  "GOING NOWHERE,"
+  at(B * 12, () => {
+    clear();
+    const and   = el("AND I AIN'T",    'white', 'clamp(20px,6.5vw,76px)',  '34%');
+    const going = el('GOING NOWHERE,', 'white', 'clamp(32px,10vw,122px)', '55%');
+    slideUp(and, 200);
+    setTimeout(() => punch(going, 280), 100);
+  });
+
+  // BEAT 14 — "SO YOU CAN"  |  "GET TO KNOW ME" gold zoomOut
+  at(B * 14, () => {
+    clear();
+    const so  = el('SO YOU CAN',      'white', 'clamp(18px,5.5vw,64px)',  '32%');
+    const get = el('GET TO KNOW ME',  'gold',  'clamp(34px,11vw,134px)', '55%');
+    slideUp(so, 200);
+    setTimeout(() => zoomOut(get, 360), 80);
+  });
+
+  // ══════════════════════════════════════════
+  // END — fade out + show replay
+  // ══════════════════════════════════════════
+  at(B * 16 + 200, () => {
+    stage.querySelectorAll('.word').forEach(d => fadeOut(d, 800));
+    setTimeout(() => {
+      clear();
+      document.getElementById('replay-btn').style.display = 'block';
+      document.getElementById('credit').style.display     = 'block';
+    }, 900);
+  });
+}
+
+// ─────────────────────────────────────────────
+//  ENTRY POINTS
+// ─────────────────────────────────────────────
+function start() {
+  const ov = document.getElementById('overlay');
+  ov.style.opacity = '0';
+  ov.style.transition = 'opacity 0.4s';
+  setTimeout(() => ov.style.display = 'none', 400);
+  runTimeline();
+}
+
+function replay() {
+  document.getElementById('replay-btn').style.display = 'none';
+  document.getElementById('credit').style.display     = 'none';
+  killAll();
+  runTimeline();
+}
+</script>
+</body>
+</html>

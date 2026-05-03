@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(py -c \":*)",
+      "Bash(py gerar.py \"Demo Catalogo\" \"85999999999\" \"catalogo_produtos_base.csv\")",
+      "PowerShell(New-Item -ItemType Directory -Path \"C:\\\\Users\\\\Lucas\\\\Desktop\\\\catalogo\\\\admin\" -Force)",
+      "PowerShell(\\(Select-String -Path \"C:\\\\Users\\\\Lucas\\\\Desktop\\\\catalogo\\\\selecao.html\" -Pattern \"nome|produto\" -AllMatches\\).Count)"
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+﻿id,nome,categoria,subcategoria,descricao,unidade,destaque,ativo,foto_arquivo,badge
+1,"Porta Parana","Portas","Semi Sólidas","Porta de entrada da linha das semi sólidas.","un",sim,sim,"porta-semi-solida-parana.jpg",
+2,"Porta Copaíba","Portas","Semi Sólidas","Porta superior a paraná em preenchimento e resistencia.","un",sim,sim,"porta-semi-solida-copaiba.jpg",
+3,"Porta  Naval","Portas","Semi Sólidas","Aqui é o melhor custo benefício pois é resistente a umidade e já vem pronta para receber a tinta.","un",sim,sim,"porta-semi-solida-naval.jpg",mais-vendido
+4,"Porta Londres","Portas","Sólidas","Porta mais vendida dessa linha. Design premium e que melhor se adapta a qualquer ambiente.","mÂ²",sim,sim,"porta-solida-londres.jpg",
+6,"Porta Tabicao","Portas","Sólidas","Porta com tabuletas maiores que a veneziana. Facilita limpeza e ventila mais ainda.","mÂ²",sim,sim,"porta-solida-tabicao.png",promocao
+11,"2 Frisos","Concrem","Personalizada","Design moderno com 4 frisos horizontais. > Acabamento branco impecável e pronto para instalar. O detalhe linear que traz sofisticação e personalidade para qualquer ambiente interno.","un",sim,sim,"Revestida 4 Frisos.jpg",
+14,"Colmeia com Almofada","Portas","Sólidas","...","mÂ²",sim,sim,"Colméia Trabalhada Reta c Almofada.jpg",

@@ -74,11 +74,24 @@ def gerar(nome_empresa, whatsapp, csv_path, logo_url=""):
         print("Verifique se o arquivo tem as colunas: id, nome, categoria, subcategoria, descricao, unidade, foto_arquivo")
         sys.exit(1)
 
+    # ── Filtrar apenas produtos ativos ────────────────────────
+    produtos_raw = [p for p in produtos_raw
+                    if p.get('ativo', 'sim').strip() in ('sim', '1', '')]
+
     # ── Montar array de produtos JavaScript ───────────────────
     produtos_js = []
     for p in produtos_raw:
         foto_arquivo = p.get('foto_arquivo', '').strip()
         badge        = p.get('badge', '').strip()
+        extras_raw   = p.get('fotos_extras', '').strip()
+
+        # Monta lista de fotos: principal + extras separadas por |
+        fotos = [f"/fotos/{foto_arquivo}"]
+        if extras_raw:
+            for extra in extras_raw.split('|'):
+                extra = extra.strip()
+                if extra:
+                    fotos.append(f"/fotos/{extra}")
 
         produtos_js.append({
             "id":       int(p['id']) if str(p['id']).isdigit() else p['id'],
@@ -88,6 +101,7 @@ def gerar(nome_empresa, whatsapp, csv_path, logo_url=""):
             "desc":     p.get('descricao', '').strip(),
             "un":       p.get('unidade', '').strip(),
             "foto":     f"/fotos/{foto_arquivo}",
+            "fotos":    fotos,
             "destaque": badge,
         })
 
