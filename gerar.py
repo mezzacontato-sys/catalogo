@@ -155,7 +155,7 @@ def gerar(nome_empresa, whatsapp, csv_path, logo_url="", cor="#111"):
         f'#banner{{background:{cor_base}!important}}'
         f'.chip.active,.sub-chip.active{{background:{cor_base}!important;border-color:{cor_base}!important;color:#fff!important}}'
         f'@media(hover:hover){{.chip:hover,.sub-chip:hover{{border-color:{cor_base}!important;color:{cor_base}!important}}}}'
-        f'.card-add{{background:{cor_base}!important}}'
+        f'.card-add{{background:#111!important}}'
         f'#search{{border-color:{cor_base}!important}}'
         f'#cart-count{{background:{cor_base}!important}}'
         f'</style>'
