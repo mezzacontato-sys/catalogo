@@ -148,20 +148,7 @@ def gerar(nome_empresa, whatsapp, csv_path, logo_url="", cor="#111"):
         html
     )
 
-    # ── Injetar cor personalizada ─────────────────────────────
-    cor_base = cor if cor and cor != "#111" else "#111"
-    style = (
-        f'<style id="cor-cliente">'
-        f'#banner{{background:{cor_base}!important}}'
-        f'.chip.active,.sub-chip.active{{background:{cor_base}!important;border-color:{cor_base}!important;color:#fff!important}}'
-        f'@media(hover:hover){{.chip:hover,.sub-chip:hover{{border-color:{cor_base}!important;color:{cor_base}!important}}}}'
-        f'.card-add{{background:{cor_base}!important}}'
-        f'#cart-btn{{background:{cor_base}!important}}'
-        f'#search{{border-color:{cor_base}!important}}'
-        f'#cart-count{{background:{cor_base}!important}}'
-        f'</style>'
-    )
-    html = html.replace('</head>', style + '\n</head>', 1)
+    # (cor reservada para uso futuro — layout usa preto padrão)
 
     # ── Substituir PRODUCTS (pode ter base64 enorme) ──────────
     marker_inicio = 'var PRODUCTS = ['
