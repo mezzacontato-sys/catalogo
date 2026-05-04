@@ -27,7 +27,7 @@ import unicodedata
 from pathlib import Path
 
 # ─── Configuração ────────────────────────────────────────────────────────────
-VERCEL_URL    = "https://catalogoweb-ten.vercel.app"
+VERCEL_URL    = "https://catalogomadeireira.com.br"
 TEMPLATE_PATH = Path("catalogos/safra/index.html")
 # ─────────────────────────────────────────────────────────────────────────────
 
