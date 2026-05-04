@@ -83,9 +83,10 @@ body{font-family:'Inter',sans-serif;background:#fff;color:#111;-webkit-tap-highl
 #cart-wpp-btn svg{width:20px;height:20px;fill:#fff;flex-shrink:0}
 #overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;display:none;align-items:flex-end;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
 #overlay.open{display:flex}
-#modal{background:#fff;width:100%;max-height:92vh;overflow-y:auto;transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+#modal{background:#fff;width:100%;max-height:92vh;overflow-y:auto;transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);border-radius:16px 16px 0 0}
 #overlay.open #modal{transform:translateY(0)}
-@media(min-width:640px){#overlay{align-items:center;justify-content:center}#modal{width:460px;max-height:88vh;transform:scale(.97)}#overlay.open #modal{transform:scale(1)}}
+@media(min-width:640px){#overlay{align-items:center;justify-content:center}#modal{width:460px;max-height:88vh;border-radius:8px;transform:scale(.97)}#overlay.open #modal{transform:scale(1)}}
+#modal-handle{width:36px;height:4px;border-radius:2px;background:#ddd;margin:10px auto 0;flex-shrink:0}
 #modal-top{position:sticky;top:0;background:#fff;display:flex;justify-content:space-between;align-items:center;padding:.9rem 1.25rem;border-bottom:1px solid #eee;z-index:10}
 #modal-cats{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#aaa}
 #modal-close{background:none;border:none;font-size:26px;cursor:pointer;color:#111;line-height:1;padding:0}
@@ -176,6 +177,7 @@ body{font-family:'Inter',sans-serif;background:#fff;color:#111;-webkit-tap-highl
 
 <div id="overlay">
   <div id="modal">
+    <div id="modal-handle"></div>
     <div id="modal-top"><span id="modal-cats"></span><button id="modal-close">&#215;</button></div>
     <div id="modal-img-wrap">
       <button id="modal-prev" onclick="modalNav(-1)">&#8249;</button>
@@ -444,6 +446,42 @@ document.addEventListener("click",function(e){
 document.getElementById("sort-sel").addEventListener("change",function(e){srt=e.target.value;render();});
 document.getElementById("overlay").addEventListener("click",function(e){if(e.target===document.getElementById("overlay"))closeModal();});
 document.getElementById("modal-close").addEventListener("click",closeModal);
+
+// ── Swipe down para fechar modal (mobile) ─────────────────
+(function(){
+  var modal   = document.getElementById("modal");
+  var overlay = document.getElementById("overlay");
+  var startY=0, lastY=0, active=false;
+
+  modal.addEventListener("touchstart",function(e){
+    startY = lastY = e.touches[0].clientY;
+    active = true;
+    modal.style.transition = "none";
+  },{passive:true});
+
+  modal.addEventListener("touchmove",function(e){
+    if(!active) return;
+    lastY = e.touches[0].clientY;
+    var delta = lastY - startY;
+    // Só arrasta para baixo e só quando está no topo do scroll
+    if(delta > 0 && modal.scrollTop <= 0){
+      modal.style.transform = "translateY("+delta+"px)";
+    }
+  },{passive:true});
+
+  modal.addEventListener("touchend",function(){
+    if(!active) return;
+    active = false;
+    modal.style.transition = "";
+    var delta = lastY - startY;
+    if(delta > 90){
+      closeModal();
+      setTimeout(function(){ modal.style.transform=""; },400);
+    } else {
+      modal.style.transform = "";
+    }
+  });
+})();
 document.getElementById("modal-add-cart").addEventListener("click",function(){addToCart(parseInt(document.getElementById("modal").dataset.pid));});
 document.getElementById("empty-reset").addEventListener("click",function(){
   cat="Todos"; sub=""; busca="";
