@@ -55,7 +55,7 @@ def ler_csv(caminho):
     return []
 
 
-def gerar(nome_empresa, whatsapp, csv_path, logo_url="", cor="#111"):
+def gerar(nome_empresa, whatsapp, csv_path, logo_url="", cor="#111", slug_override=""):
     # ── Validações ────────────────────────────────────────────
     if not TEMPLATE_PATH.exists():
         print(f"\nERRO: Template não encontrado em '{TEMPLATE_PATH}'")
@@ -164,7 +164,7 @@ def gerar(nome_empresa, whatsapp, csv_path, logo_url="", cor="#111"):
     html = html[:idx_inicio] + f'var PRODUCTS = {products_json};' + html[idx_fim:]
 
     # ── Salvar ────────────────────────────────────────────────
-    slug       = slugify(nome_empresa)
+    slug       = slug_override if slug_override else slugify(nome_empresa)
     output_dir = Path("catalogos") / slug
     output_dir.mkdir(parents=True, exist_ok=True)
     output_file = output_dir / "index.html"
@@ -217,9 +217,10 @@ if __name__ == "__main__":
     arq   = sys.argv[3]
     logo  = sys.argv[4] if len(sys.argv) > 4 else ""
     cor   = sys.argv[5] if len(sys.argv) > 5 else "#111"
+    slug  = sys.argv[6] if len(sys.argv) > 6 else ""
 
     # Garantir DDI 55 (Brasil)
     if not tel.startswith('55'):
         tel = '55' + tel
 
-    gerar(nome, tel, arq, logo, cor)
+    gerar(nome, tel, arq, logo, cor, slug)
