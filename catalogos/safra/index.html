@@ -92,9 +92,9 @@ body{font-family:'Inter',sans-serif;background:#fff;color:#111;-webkit-tap-highl
 #modal-close{background:none;border:none;font-size:26px;cursor:pointer;color:#111;line-height:1;padding:0}
 #modal-img-wrap{background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.5rem 1rem;min-height:280px;position:relative}
 #modal-img{max-height:300px;max-width:100%;object-fit:contain}
-#modal-dots{display:flex;justify-content:center;gap:7px;padding:10px 0 0}
-.mdot{width:7px;height:7px;border-radius:50%;background:#ddd;border:none;padding:0;cursor:pointer;transition:background .2s}
-.mdot.on{background:#111}
+#modal-dots{position:absolute;bottom:14px;left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:5;pointer-events:none}
+.mdot{width:9px;height:9px;border-radius:50%;background:rgba(0,0,0,.22);border:2px solid rgba(255,255,255,.7);padding:0;cursor:pointer;transition:background .18s,transform .18s;pointer-events:all;flex-shrink:0}
+.mdot.on{background:#111;border-color:#111;transform:scale(1.25)}
 #modal-prev,#modal-next{position:absolute;top:50%;transform:translateY(-60%);background:rgba(0,0,0,.18);color:#111;border:none;width:30px;height:30px;border-radius:50%;font-size:20px;line-height:1;cursor:pointer;display:none;align-items:center;justify-content:center;font-weight:300}
 #modal-prev{left:8px}#modal-next{right:8px}
 #modal-body{padding:1.4rem 1.25rem 0}
@@ -202,6 +202,7 @@ body{font-family:'Inter',sans-serif;background:#fff;color:#111;-webkit-tap-highl
           <img id="modal-img" src="" alt="">
           <button id="modal-next" onclick="modalNav(1)">&#8250;</button>
           <div id="modal-dots"></div>
+          <!-- dots ficam sobrepostos via position:absolute no CSS -->
         </div>
       </div>
       <div id="modal-detail">
@@ -410,15 +411,15 @@ function suggest(v){
   });
 }
 var _mFotos=[],_mIdx=0;
-function setModalFoto(idx){
-  _mIdx=idx;
-  document.getElementById("modal-img").src=_mFotos[idx];
+
+function _buildDots(){
   var dots=document.getElementById("modal-dots");
   var prev=document.getElementById("modal-prev");
   var next=document.getElementById("modal-next");
   if(_mFotos.length>1){
     var h="";
-    for(var i=0;i<_mFotos.length;i++)h+='<button class="mdot'+(i===idx?" on":"")+'" onclick="setModalFoto('+i+')"></button>';
+    for(var i=0;i<_mFotos.length;i++)
+      h+='<button class="mdot'+(i===0?" on":"")+ '" onclick="setModalFoto('+i+')"></button>';
     dots.innerHTML=h;
     prev.style.display=next.style.display="flex";
   }else{
@@ -426,7 +427,37 @@ function setModalFoto(idx){
     prev.style.display=next.style.display="none";
   }
 }
+
+function setModalFoto(idx){
+  _mIdx=idx;
+  document.getElementById("modal-img").src=_mFotos[idx];
+  // Preload próxima foto
+  if(_mFotos.length>1){
+    var pre=new Image();
+    pre.src=_mFotos[(idx+1)%_mFotos.length];
+  }
+  // Atualiza dots sem recriar (só troca classe)
+  var dotEls=document.getElementById("modal-dots").querySelectorAll(".mdot");
+  dotEls.forEach(function(d,i){d.classList.toggle("on",i===idx);});
+}
+
 function modalNav(dir){setModalFoto((_mIdx+dir+_mFotos.length)%_mFotos.length);}
+
+// Swipe left/right no carrossel
+(function(){
+  var wrap=document.getElementById("modal-img-wrap");
+  var sx=0,sy=0;
+  wrap.addEventListener("touchstart",function(e){
+    sx=e.touches[0].clientX; sy=e.touches[0].clientY;
+  },{passive:true});
+  wrap.addEventListener("touchend",function(e){
+    var dx=e.changedTouches[0].clientX-sx;
+    var dy=e.changedTouches[0].clientY-sy;
+    if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>40){
+      modalNav(dx<0?1:-1);
+    }
+  },{passive:true});
+})();
 function openModal(id){
   var p=PRODUCTS.find(function(x){return x.id===id;}); if(!p)return;
   _mFotos=(p.fotos&&p.fotos.length)?p.fotos:[p.foto];
@@ -435,6 +466,9 @@ function openModal(id){
   document.getElementById("modal-cats").textContent=p.cat+(p.sub?" - "+p.sub:"");
   document.getElementById("modal-name").textContent=p.nome;
   document.getElementById("modal-img").alt=p.nome;
+  // Preload todas as fotos do produto ao abrir
+  _mFotos.forEach(function(src){var i=new Image();i.src=src;});
+  _buildDots();
   setModalFoto(0);
   document.getElementById("modal-desc").textContent=p.desc;
   document.getElementById("modal-un").textContent="Unidade de venda: "+p.un;
