@@ -1,18 +1,18 @@
 id,nome,categoria,subcategoria,descricao,unidade,destaque,ativo,foto_arquivo,badge,fotos_extras
 1,Porta Londres,Portas,Sólidas,A mais vendida da linha sólida. Design premium que se adapta a qualquer ambiente.,un,sim,sim,folha londres.jpg,,porta londres simulacao.jpg
 2,Porta Tabicão,Portas,Sólidas,Porta com tabuletas que facilitam limpeza e garantem boa ventilação.,un,sim,sim,porta tabicao nova.jpg,,porta tabicao nova aberta.jpg|porta tabicao simulacao.jpg
-3,Janela Lateral Colmeia,Janelas,Especial,Porta sólida com laterais em colmeia para maior ventilação e estilo.,un,sim,sim,janela Lateral Colmeia.jpg,,janela-Lateral Colmeia simulacao.jpg
+3,Janela Colmeia Veneziana,Janelas,Especial,Porta sólida com laterais em colmeia para maior ventilação e estilo.,un,sim,sim,janela Lateral Colmeia.jpg,,janela-Lateral Colmeia simulacao.jpg
 4,Porta 2 em 1,Portas,Sólidas,Design versátil com dois estilos em uma única folha.,un,sim,sim,porta-solida-2em1.jpg,,
 5,Porta Ripada,Portas,Sólidas,Design moderno com ripas verticais e puxador preto. O modelo mais arrojado da linha.,un,sim,sim,Ripada Folha.jpg,mais-vendido,Ripada Com Puxador.jpg|Ripada Simulacao.jpg
 6,Porta Ondulada,Portas,Sólidas,Porta artesanal com entalhes ondulados que formam um padrão único e exclusivo.,un,sim,sim,Porta Ondulada.jpg,,Porta Ondulada Simulação.jpg
-7,Porta Almofada Arqueada,Portas,Sólidas,Porta clássica com 15 almofadas e arco superior. Elegância atemporal.,un,sim,sim,almofada arqueada.jpg,,almofada arqueada simulaçao.jpg
+7,Porta Almofada Arqueada,Portas,Sólidas,Porta clássica com 15 almofadas e arco superior. Elegância atemporal.,un,sim,nao,almofada arqueada.jpg,,almofada arqueada simulaçao.jpg
 8,Porta Almofada Sacada,Portas,Sólidas,Porta com almofadas sacadas em relevo. Acabamento nobre e imponente.,un,sim,sim,almofada sacada.jpg,,almofada sacada simulaçao.jpg
 9,Porta Trabalhada Flor,Portas,Sólidas,Porta exclusiva com entalhes florais esculpidos em 3 painéis. Peça artesanal.,un,sim,sim,trabalhada flor.jpg,,
 10,Porta Itaparica,Portas,Sólidas,Porta com 4 almofadas curvas em arco assimétrico. Referência em elegância.,un,sim,sim,itaparica.jpg,,itaparica simulaçao.jpg
 11,Porta Magna,Portas,Sólidas,Porta com frisos diagonais modernos. Diferencial absoluto no acabamento.,un,sim,sim,magna.jpg,,
 12,Porta Londres 2 Vidros,Portas,Sólidas,Versão da Londres com 2 vidros centrais. Ideal para ambientes que pedem mais luz.,un,sim,sim,Londres 2 Vidros.jpg,,Londres 2 vidros simulacao.jpg
 13,Porta Londres c/ Laterais Veneziana,Portas,Sólidas,Conjunto porta Londres com 2 vidros e 2 laterais fixas em veneziana.,cj,sim,sim,Londe 2 Vidros 2 Laterais Veneziana.jpg,,Londe 2 Vidros 2 Laterais Veneziana Simulaçao.jpg
-14,Porta c/ Passagem para PET,Portas,Sólidas,Porta com abertura para PET na parte inferior. Prática e funcional.,un,sim,sim,Porta com Passagem para PET.jpg,,
+14,Porta c/ Passagem para PET,Portas,Sólidas,Porta com abertura para PET na parte inferior. Prática e funcional.,un,sim,sim,Porta com Passagem PET.jpg,,
 15,Portão de Madeira,Portões,Rústico,Portão robusto estilo celeiro com ferragens de ferro. Ideal para garagem.,un,sim,sim,Portao de Madeira.jpg,,Portao de Madeira Simulaçao.jpg
 16,Porta Putiti,Portas,Sólidas,Porta com colmeia arqueada superior e vidros. Design clássico e requintado.,un,sim,sim,Putiti.jpg,,Putit Simulaçao.jpg
 17,Porta Tabicão Horizontal,Portas,Sólidas,Porta com tabicão na horizontal para um visual contemporâneo e clean.,un,sim,nao,por.jpg,,
@@ -39,7 +39,7 @@ id,nome,categoria,subcategoria,descricao,unidade,destaque,ativo,foto_arquivo,bad
 38,Janela Pivotante,Janelas,Pivotante,Janela pivotante com 4 quadrados. Ventilação precisa e design contemporâneo.,un,sim,sim,Janela Pivotante Fechada.jpg,,Janela Pivotante Aberta.jpg|Janela Pivotante Aberta Simulaçao.jpg
 39,Mesanino Max Ar,Janelas,Mesanino,Janela tipo maxim-ar com 4 quadros. Entrada de ar com proteção contra chuva.,un,sim,sim,Mesanino Max Ar.jpg,,
 40,Mesanino Pivotante,Janelas,Mesanino,Janela mesanino pivotante com abertura total. Ventilação máxima para qualquer ambiente.,un,sim,sim,Mesanino Pivotante.jpg,,
-41,Brisa Bandeirola,Janelas,Bandeirola,Janela bandeirola dupla com veneziana. Instalada acima de portas e janelas.,un,sim,sim,Brisa Bandeirola.jpg,,
+41,Veneziana com Bandeirola,Janelas,Bandeirola,Janela bandeirola dupla com veneziana. Instalada acima de portas e janelas.,un,sim,sim,Brisa Bandeirola.jpg,,
 42,Janela Colmeia Tabicão Deslizante,Janelas,Colmeia,Janela com folha colmeia e folha tabicão deslizante. Versátil e funcional.,un,sim,nao,janela 12.jpg,,
 43,Janela Tabicão 4 Bandas,Janelas,Tabicão,Janela tabicão com 4 folhas. Alta durabilidade e ampla ventilação.,cj,sim,sim,tabicao 4 bandas.jpg,,Tabicao 4 bandas aberto.jpg|tabicao 4 bandas de lado.jpg|Tabicao 4 bandas aberto simulaçao.jpg
 44,Janela Tabicão Correr,Janelas,Tabicão,Janela tabicão 4 folhas tipo correr em teca. Robustez e durabilidade.,cj,sim,nao,jan.jpg,,
