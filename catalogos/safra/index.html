@@ -668,6 +668,8 @@ document.getElementById("cart-wpp-btn").addEventListener("click",sendCartWpp);
       fsOv.style.transition = "";
       fsScale = 1;
       fsImg.style.transform = "";
+      fsWrap.style.transform = "";
+      fsWrap.style.transition = "";
     }, 220);
   }
 
@@ -696,35 +698,80 @@ document.getElementById("cart-wpp-btn").addEventListener("click",sendCartWpp);
     }
   });
 
-  // ── Swipe down para fechar / left-right para navegar ──
-  var swX=0, swY=0, swActive=false;
+  // ── Swipe: fechar (baixo) + carrossel fluido (esquerda/direita) ──
+  var swX=0, swY=0, swActive=false, swDir=null, swT=0;
+
+  function _wrapTx(x, dur, ease){
+    fsWrap.style.transition = dur ? "transform "+dur+"s "+(ease||"cubic-bezier(.25,.46,.45,.94)") : "none";
+    fsWrap.style.transform  = x ? "translateX("+x+"px)" : "";
+  }
+  function _snapBack(){
+    _wrapTx(0,.25); setTimeout(function(){fsWrap.style.transition="";},250);
+  }
+  function _slideTo(newIdx, dir){
+    // dir: -1 = vai para esquerda (próxima), +1 = vai para direita (anterior)
+    var vw = window.innerWidth;
+    // 1. anima saída da imagem atual
+    _wrapTx(dir * vw, .28);
+    setTimeout(function(){
+      // 2. troca foto e posiciona wrap no lado oposto (sem transição)
+      fsSetFoto(newIdx);
+      _wrapTx(-dir * vw, 0);
+      // 3. anima entrada
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){
+        _wrapTx(0, .28);
+        setTimeout(function(){ fsWrap.style.transition=""; }, 280);
+      });});
+    }, 280);
+  }
 
   fsOv.addEventListener("touchstart", function(e){
     if(e.touches.length !== 1 || fsScale > 1){ swActive=false; return; }
-    swX = e.touches[0].clientX;
-    swY = e.touches[0].clientY;
+    swX  = e.touches[0].clientX;
+    swY  = e.touches[0].clientY;
+    swT  = Date.now();
+    swDir = null;
     swActive = true;
-    fsOv.style.transition = "none";
+    fsWrap.style.transition = "none";
+    fsOv.style.transition   = "none";
   },{passive:true});
 
   fsOv.addEventListener("touchmove", function(e){
     if(!swActive || e.touches.length !== 1 || fsScale > 1) return;
+    var dx = e.touches[0].clientX - swX;
     var dy = e.touches[0].clientY - swY;
-    if(dy > 0){
-      var prog = Math.min(dy/250, 1);
-      fsOv.style.transform   = "translateY("+dy+"px)";
-      fsOv.style.opacity     = ""+(1 - prog*0.6);
+
+    // Determina direção no primeiro movimento significativo
+    if(!swDir && (Math.abs(dx)>8 || Math.abs(dy)>8)){
+      swDir = Math.abs(dx) > Math.abs(dy) ? "h" : "v";
+    }
+
+    if(swDir === "h" && fsFotos.length > 1){
+      // Foto segue o dedo
+      fsWrap.style.transform = "translateX("+dx+"px)";
+    } else if(swDir === "v" && dy > 0){
+      var prog = Math.min(dy/280, 1);
+      fsOv.style.transform = "translateY("+dy+"px)";
+      fsOv.style.opacity   = ""+(1 - prog*0.6);
     }
   },{passive:true});
 
   fsOv.addEventListener("touchend", function(e){
     if(!swActive) return;
     swActive = false;
-    fsOv.style.transition = "";
-    var dx = e.changedTouches[0].clientX - swX;
-    var dy = e.changedTouches[0].clientY - swY;
-    if(fsScale <= 1 && Math.abs(dy) > Math.abs(dx) && dy > 90){
-      // Fechar com animação de saída para baixo
+    var dx  = e.changedTouches[0].clientX - swX;
+    var dy  = e.changedTouches[0].clientY - swY;
+    var vel = Math.abs(dx) / (Date.now() - swT); // px/ms
+
+    if(swDir === "h" && fsFotos.length > 1){
+      // Threshold: 22% da tela OU flick rápido (>0.35 px/ms)
+      if(Math.abs(dx) > window.innerWidth * 0.22 || vel > 0.35){
+        _slideTo((fsIdx + (dx < 0 ? 1 : -1) + fsFotos.length) % fsFotos.length, dx < 0 ? -1 : 1);
+      } else {
+        _snapBack();
+      }
+    } else if(swDir === "v" && dy > 90){
+      // Fechar com slide para baixo
       fsOv.style.transition = "transform .28s ease, opacity .28s ease";
       fsOv.style.transform  = "translateY(100vh)";
       fsOv.style.opacity    = "0";
@@ -736,18 +783,16 @@ document.getElementById("cart-wpp-btn").addEventListener("click",sendCartWpp);
         fsOv.style.transition = "";
         fsScale = 1;
         fsImg.style.transform = "";
+        fsWrap.style.transform = "";
       }, 280);
-    } else if(fsScale <= 1 && Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50 && fsFotos.length > 1){
-      // Navegar entre fotos
-      fsSetFoto((fsIdx + (dx < 0 ? 1 : -1) + fsFotos.length) % fsFotos.length);
-      fsOv.style.transform = "";
-      fsOv.style.opacity   = "";
     } else {
-      // Snap back
-      fsOv.style.transition = "transform .2s ease, opacity .2s ease";
-      fsOv.style.transform  = "";
-      fsOv.style.opacity    = "";
-      setTimeout(function(){ fsOv.style.transition=""; }, 200);
+      // Snap back em qualquer direção
+      if(swDir === "h"){ _snapBack(); }
+      else {
+        fsOv.style.transition = "transform .2s ease, opacity .2s ease";
+        fsOv.style.transform  = ""; fsOv.style.opacity = "";
+        setTimeout(function(){ fsOv.style.transition=""; }, 200);
+      }
     }
   },{passive:true});
 
