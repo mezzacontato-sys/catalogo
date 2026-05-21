@@ -12,25 +12,25 @@ id,nome,categoria,subcategoria,descricao,unidade,destaque,ativo,foto_arquivo,bad
 11,Porta Magna,Portas,Sólidas,Porta com frisos diagonais modernos. Diferencial absoluto no acabamento.,un,sim,sim,magna.jpg,,
 12,Porta Londres 2 Vidros,Portas,Sólidas,Versão da Londres com 2 vidros centrais. Ideal para ambientes que pedem mais luz.,un,sim,sim,Londres 2 Vidros.jpg,,Londres 2 vidros simulacao.jpg
 13,Porta Londres c/ Laterais Veneziana,Portas,Sólidas,Conjunto porta Londres com 2 vidros e 2 laterais fixas em veneziana.,cj,sim,sim,Londe 2 Vidros 2 Laterais Veneziana.jpg,,Londe 2 Vidros 2 Laterais Veneziana Simulaçao.jpg
-14,Porta c/ Passagem para PET,Portas,Sólidas,Porta com abertura para PET na parte inferior. Prática e funcional.,un,sim,sim,Porta com Passagem PET.jpg,,Pet simulaçao.jpg
+14,Porta c/ Passagem para PET,Portas,Semi-Sólidas,Porta com abertura para PET na parte inferior. Prática e funcional.,un,sim,sim,Porta com Passagem PET.jpg,,Pet simulaçao.jpg
 15,Portão de Madeira,Portões,Rústico,Portão robusto estilo celeiro com ferragens de ferro. Ideal para garagem.,un,sim,sim,Portao de Madeira.jpg,,Portao de Madeira Simulaçao.jpg
 16,Porta Putiti,Portas,Sólidas,Porta com colmeia arqueada superior e vidros. Design clássico e requintado.,un,sim,sim,Putiti.jpg,,Putit Simulaçao.jpg
 17,Porta Tabicão Horizontal,Portas,Sólidas,Porta com tabicão na horizontal para um visual contemporâneo e clean.,un,sim,nao,por.jpg,,
 18,Porta Veneziana Dupla,Portas,Sólidas,Porta dupla com veneziana em toda a extensão. Ideal para ambientes externos.,cj,sim,nao,por2.jpg,,
 19,Porta Tabicão c/ Lateral Veneziana,Portas,Sólidas,Porta com padrão tabicão central e laterais fixas veneziana. Ventilação superior.,un,sim,nao,por4.jpg,,
 20,Porta Nobre em Teca,Portas,Sólidas,Porta trabalhada em madeira teca com 3 painéis diferenciados. Alta durabilidade.,un,sim,nao,por5.jpg,,
-21,Porta Tabicão c/ Vidro e Lateral,Portas,Sólidas,Porta tabicão com vidro central e lateral veneziana em teca maciça.,un,sim,sim,por7.jpg,,
+21,Porta Tabicão c/ Vidro e Lateral,Portas,Sólidas,Porta tabicão com vidro central e lateral veneziana em teca maciça.,un,sim,nao,por7.jpg,,
 22,Porta Londres 1 Vidro,Portas,Sólidas,Porta Londres com vidro central. Beleza clássica com entrada de luz natural.,un,sim,sim,Londres 1 Vidro.jpg,,Londres 1 Vidro simulacao.jpg
 23,Porta Ficha,Portas,Sólidas,Porta maciça em réguas verticais de madeira. Rústica e resistente à umidade.,un,sim,sim,ficha.jpg,,
 24,Porta Paraná,Portas,Semi-Sólidas,Porta de entrada da linha semi-sólida. Estrutura leve com bom isolamento acústico.,un,sim,sim,porta-semi-solida-parana.jpg,,
 25,Porta Copaíba,Portas,Semi-Sólidas,Superior à Paraná em preenchimento e resistência. Melhor custo-benefício da linha.,un,sim,sim,porta-semi-solida-copaiba.jpg,,
 26,Porta Naval,Portas,Semi-Sólidas,Resistente à umidade e pronta para receber tinta. A preferida para áreas molhadas.,un,sim,sim,porta-semi-solida-naval.jpg,mais-vendido,
-27,Porta Colmeia Almofada,Portas,Colmeia,Porta colmeia com almofada central arqueada. Tradição e funcionalidade em um só produto.,un,sim,sim,Colmeia Almofada.jpg,,Colmeia Almofada simulaçao.jpg
-28,Porta Colmeia Reta,Portas,Colmeia,Porta colmeia clássica com grades quadradas. Alta ventilação e elegância.,un,sim,sim,Colmeia Reta.jpg,,colmeia reta simulacao.jpg
-29,Porta Colmeia c/ Veneziana,Portas,Colmeia,Porta colmeia com veneziana na metade inferior. Equilíbrio de luz e privacidade.,un,sim,sim,Colmeia c Veneziana.jpg,,Colmeia c Veneziana simulacao.jpg
-30,Porta Colmeia Trabalhada c/ Almofada,Portas,Colmeia,Porta colmeia elaborada com almofada central. Acabamento diferenciado e nobre.,un,sim,sim,Colméia Trabalhada Reta c Almofada.jpg,,Colméia Trabalhada Reta c Almofada simulacao.jpg
-31,Porta Colmeia c/ Vidro,Portas,Colmeia,Porta colmeia com vidros fixos na parte superior. Luz e ventilação ao mesmo tempo.,un,sim,sim,Colmeia com Vidro.jpg,,Colmeia com Vidro Simulação.jpg
-32,Porta Colmeia Reta Correr,Portas,Colmeia,Porta colmeia 4 folhas tipo correr. Ideal para grandes vãos.,cj,sim,sim,Colmeia Reta Correr.jpg,,Colmeia Reta Correr Simulação.jpg
+27,Porta Colmeia Almofada,Portas,Correr,Porta colmeia com almofada central arqueada. Tradição e funcionalidade em um só produto.,un,sim,sim,Colmeia Almofada.jpg,,Colmeia Almofada simulaçao.jpg
+28,Porta Colmeia Reta,Portas,Correr,Porta colmeia clássica com grades quadradas. Alta ventilação e elegância.,un,sim,sim,Colmeia Reta.jpg,,colmeia reta simulacao.jpg
+29,Porta Colmeia c/ Veneziana,Portas,Correr,Porta colmeia com veneziana na metade inferior. Equilíbrio de luz e privacidade.,un,sim,sim,Colmeia c Veneziana.jpg,,Colmeia c Veneziana simulacao.jpg
+30,Porta Colmeia Trabalhada c/ Almofada,Portas,Correr,Porta colmeia elaborada com almofada central. Acabamento diferenciado e nobre.,un,sim,sim,Colméia Trabalhada Reta c Almofada.jpg,,Colméia Trabalhada Reta c Almofada simulacao.jpg
+31,Porta Colmeia c/ Vidro,Portas,Correr,Porta colmeia com vidros fixos na parte superior. Luz e ventilação ao mesmo tempo.,un,sim,sim,Colmeia com Vidro.jpg,,Colmeia com Vidro Simulação.jpg
+32,Porta Colmeia Reta Correr,Portas,Correr,Porta colmeia 4 folhas tipo correr. Ideal para grandes vãos.,cj,sim,sim,Colmeia Reta Correr.jpg,,Colmeia Reta Correr Simulação.jpg
 33,Janela Veneziana,Janelas,Veneziana,Janela veneziana clássica com colmeia central. Muito ventilada e durável.,un,sim,sim,Janela Colmeia com Veneziana.jpg,,Janela Colmeia com Veneziana Simulaçao.jpg
 34,Janela Colmeia Pivotante,Janelas,Pivotante,Janela colmeia com abertura pivotante. Ventilação máxima e fácil limpeza.,un,sim,sim,Janela Colmeia Pivotante.jpg,,
 35,Janela Colmeia Tabicão,Janelas,Colmeia,Janela colmeia com tabicão deslizante. Controle total da entrada de ar.,un,sim,sim,Janela Colmeia Tabicao Fechada.jpg,,Janela Colmeia Tabicao Aberta.jpg|Janela Colmeia Tabicao Aberta Simulaçao.jpg
@@ -58,14 +58,14 @@ id,nome,categoria,subcategoria,descricao,unidade,destaque,ativo,foto_arquivo,bad
 57,Madeirite Plastificado,Outros,Madeirite,Madeirite plastificado resistente à umidade. Ideal para construção e acabamento.,m²,sim,sim,madeirite plastificado.jpg,,
 58,Porta Revista,Portas,Sólidas,Porta sólida com design clássico e acabamento refinado. Uma das mais requisitadas da linha.,un,sim,sim,Revista.jpg,,porta revista simulacao.jpg
 59,Janela Tabicão,Janelas,Tabicão,Janela com folhas em tabicão. Robustez e boa ventilação para qualquer ambiente.,un,sim,sim,Janela Tabicao.jpg,,Janela Tabicao Aberta.jpg|Janela Tabicao Simulação.jpg
-60,Porta Colmeia Reta Almofada Correr,Portas,Colmeia,Porta colmeia reta com almofada central em 4 folhas tipo correr. Elegância para grandes vãos.,cj,sim,sim,Colmeia Reta Almofada Correr.jpg,,Colmeia Reta Almofada Correr Simulação.jpg
+60,Porta Colmeia Reta Almofada Correr,Portas,Correr,Porta colmeia reta com almofada central em 4 folhas tipo correr. Elegância para grandes vãos.,cj,sim,sim,Colmeia Reta Almofada Correr.jpg,,Colmeia Reta Almofada Correr Simulação.jpg
 61,Porta Riscada 1,Portas,Semi-Sólidas,Porta semi-sólida com friso diagonal clean. Linha moderna com toque sofisticado.,un,sim,sim,Riscado 1.jpg,,Riscado 1 Simulacao.jpg
 62,Porta Riscada 2,Portas,Semi-Sólidas,Porta semi-sólida com dois frisos diagonais em destaque. Elegância geométrica contemporânea.,un,sim,sim,Riscado 2.jpg,,Riscado 2 Simulacao.jpg
 63,Porta Riscada 3,Portas,Semi-Sólidas,Porta semi-sólida com trio de frisos diagonais. Visual moderno e marcante.,un,sim,sim,Riscado 3.jpg,,Riscado 3 Simulacao.jpg
 64,Porta Riscada 4,Portas,Semi-Sólidas,Porta semi-sólida com padrão de frisos diagonais completo. O modelo mais elaborado da linha Riscada.,un,sim,sim,Riscado 4.jpg,,Riscado 4 Simulacao.jpg
 65,Porta Diamante,Portas,Sólidas,Porta sólida com padrão de losangos entalhados em vidro. Visual geométrico de alto impacto.,un,sim,sim,Porta Diamante.jpg,,Porta Diamante Simulacao.jpg
 66,Porta Ondulada c/ Vidro e Lateral,Portas,Sólidas,Porta ondulada com vidro central e lateral fixa. Beleza artesanal com entrada de luz natural.,cj,sim,sim,Porta Ondulada com Vidro e Lateral.jpg,,Porta Ondulada com Vidro e Lateral Simulacao.jpg
-67,Porta Tabicão Pivotante,Portas,Sólidas,Porta com abertura pivotante no padrão tabicão. Ventilação máxima com design diferenciado.,un,sim,sim,Janela Tabicão Pivotante.jpg,,Janela Tabicão Pivotante Aberto.jpg|Janela Tabicão Pivotante Aberto Simulacao.jpg
+67,Janela Tabicão Pivotante,Janelas,Pivotante,Janela com abertura pivotante no padrão tabicão. Ventilação máxima com design diferenciado.,un,sim,sim,Janela Tabicão Pivotante.jpg,,Janela Tabicão Pivotante Aberto.jpg|Janela Tabicão Pivotante Aberto Simulacao.jpg
 68,Porta Vidro de Correr,Portas,Sólidas,Porta de vidro com abertura tipo correr. Ideal para varandas e divisórias com muita luz.,cj,sim,sim,Vidro de Correr.jpg,,Vidro de Correr Simulacao.jpg
 69,Porta com Vidro Curvo,Portas,Sólidas,Porta sólida com vidro em formato curvo. Design exclusivo que une tradição e modernidade.,un,sim,sim,Com Vidro Curvo.jpg,,Com Vidro Curvo Simulacao.jpg
 70,Porta com Vidro Lateral,Portas,Sólidas,Porta sólida com vidro lateral integrado. Ampla entrada de luz com privacidade preservada.,un,sim,sim,Com Vidro Lateral.jpg,,Com Vidro Lateral Simulacao.jpg
