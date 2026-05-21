@@ -501,7 +501,7 @@ function openModal(id){
   _buildDots();
   setModalFoto(0);
   document.getElementById("modal-desc").textContent=p.desc;
-  document.getElementById("modal-un").textContent="Unidade de venda: "+p.un;
+  document.getElementById("modal-un").textContent="";
   var msg="Ola!+Tenho+interesse+em:+"+encodeURIComponent(p.cat+" - "+p.nome);
   document.getElementById("modal-cta").href="https://wa.me/"+WHATSAPP+"?text="+msg;
   var btn=document.getElementById("modal-add-cart");
