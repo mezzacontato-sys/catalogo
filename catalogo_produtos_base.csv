@@ -70,3 +70,6 @@ id,nome,categoria,subcategoria,descricao,unidade,destaque,ativo,foto_arquivo,bad
 69,Porta com Vidro Curvo,Portas,Sólidas,Porta sólida com vidro em formato curvo. Design exclusivo que une tradição e modernidade.,un,sim,sim,Com Vidro Curvo.jpg,,Com Vidro Curvo Simulacao.jpg
 70,Porta com Vidro Lateral,Portas,Sólidas,Porta sólida com vidro lateral integrado. Ampla entrada de luz com privacidade preservada.,un,sim,sim,Com Vidro Lateral.jpg,,Com Vidro Lateral Simulacao.jpg
 71,Deck,Deck,Tábuas,Deck de madeira tratada para áreas externas. Resistente à umidade e ao sol.,m²,sim,sim,Peça Deck.jpg,,Deck simulacao.jpg
+72,Porta de Correr Copaíba,Portas,Semi-Sólidas,Porta semi-sólida com sistema de correr. Praticidade e economia de espaço.,un,sim,sim,Porta de Correr Copaiba.jpg,,Porta Correr Copaiba.jpg
+73,Porta Concrem Amadeirada,Concrem,Revestida,Porta concrem com acabamento amadeirado. Visual natural com a praticidade do concrem.,un,sim,sim,Porta Concrem Amadeirada.jpg,,Porta Concrem Amadeirada Simulacao.jpg
+74,Porta Preta Concrem,Concrem,Revestida,Porta concrem na cor preta. Design contemporâneo e sofisticado para ambientes modernos.,un,sim,sim,Porta Preta Concrem.jpg,,Porta Preta Concrem Simulacao.jpg
