@@ -144,7 +144,6 @@ body{font-family:'Inter',sans-serif;background:#fff;color:#111;-webkit-tap-highl
 .fsdot.on{background:#fff;border-color:#fff;transform:scale(1.25)}
 /* Cursor e hint no modal */
 #modal-img{cursor:zoom-in}
-#zoom-lens{position:absolute;display:none;pointer-events:none;z-index:25;border-radius:50%;width:150px;height:150px;border:2px solid rgba(255,255,255,.8);box-shadow:0 4px 24px rgba(0,0,0,.35);background-repeat:no-repeat;}
 #modal-zoom-hint{position:absolute;bottom:42px;right:10px;background:rgba(0,0,0,.28);color:#fff;font-size:10px;font-weight:600;letter-spacing:.06em;padding:4px 8px;border-radius:20px;pointer-events:none;display:flex;align-items:center;gap:4px;opacity:.85}
 #modal-zoom-hint svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
 
@@ -808,53 +807,6 @@ document.getElementById("modal-img").addEventListener("click", function(){
   openFullscreen(_mFotos, _mIdx);
 });
 
-// ── ZOOM LUPA (desktop hover) ──────────────────────────────
-(function(){
-  var wrap = document.getElementById("modal-img-wrap");
-  var img  = document.getElementById("modal-img");
-  var LENS = 150, ZOOM = 3;
-
-  var lens = document.createElement("div");
-  lens.id  = "zoom-lens";
-  wrap.appendChild(lens);
-
-  // Calcula a área real da imagem dentro do elemento (object-fit:contain)
-  function imgRect(){
-    var r  = img.getBoundingClientRect();
-    var wr = wrap.getBoundingClientRect();
-    var nw = img.naturalWidth  || 1;
-    var nh = img.naturalHeight || 1;
-    var nar = nw / nh;
-    var ear = r.width / r.height;
-    var rw, rh, ox, oy;
-    if(nar > ear){ rw=r.width; rh=r.width/nar;  ox=0;           oy=(r.height-rh)/2; }
-    else          { rh=r.height; rw=r.height*nar; oy=0;           ox=(r.width-rw)/2;  }
-    return { l:r.left-wr.left+ox, t:r.top-wr.top+oy, w:rw, h:rh };
-  }
-
-  wrap.addEventListener("mousemove", function(e){
-    // Só no desktop (hover real)
-    if(!window.matchMedia("(hover:hover)").matches){ lens.style.display="none"; return; }
-    var wr = wrap.getBoundingClientRect();
-    var ir = imgRect();
-    var mx = e.clientX - wr.left;
-    var my = e.clientY - wr.top;
-    var ix = mx - ir.l;
-    var iy = my - ir.t;
-    // Cursor fora da área da imagem → esconde
-    if(ix < 0 || iy < 0 || ix > ir.w || iy > ir.h){ lens.style.display="none"; return; }
-    lens.style.display          = "block";
-    lens.style.left             = (mx - LENS/2) + "px";
-    lens.style.top              = (my - LENS/2) + "px";
-    lens.style.backgroundImage  = "url('"+img.src+"')";
-    lens.style.backgroundSize   = (ir.w*ZOOM)+"px "+(ir.h*ZOOM)+"px";
-    lens.style.backgroundPosition = (-(ix*ZOOM - LENS/2))+"px "+(-(iy*ZOOM - LENS/2))+"px";
-  });
-
-  wrap.addEventListener("mouseleave", function(){ lens.style.display="none"; });
-  // Esconde ao abrir fullscreen
-  img.addEventListener("click", function(){ lens.style.display="none"; });
-})();
 
 buildFilters(); renderSubs(); render();
 </script>
