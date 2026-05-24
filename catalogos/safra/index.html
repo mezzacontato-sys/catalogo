@@ -39,10 +39,7 @@ body{font-family:'Inter',sans-serif;background:#fff;color:#111;-webkit-tap-highl
 .sub-chip.active{background:#111;border-color:#111;color:#fff}
 #rbar{display:flex;align-items:center;justify-content:space-between;padding:8px 1.25rem;border-bottom:1px solid #eee;gap:8px}
 #count{font-size:11px;font-weight:500;color:#aaa;letter-spacing:.06em;text-transform:uppercase;flex-shrink:0}
-#faq-rbar-btn{display:flex;align-items:center;gap:5px;background:none;border:1.5px solid #ddd;border-radius:100px;padding:5px 11px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#666;cursor:pointer;transition:all .18s;white-space:nowrap}
-#faq-rbar-btn:hover{border-color:#111;color:#111}
-#faq-rbar-btn svg{width:13px;height:13px;flex-shrink:0}
-#sort-sel{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#666;border:none;background:none;cursor:pointer;outline:none;flex-shrink:0}
+#sort-sel{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#666;border:none;background:none;cursor:pointer;outline:none}
 #grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:#eee;padding-bottom:90px}
 @media(min-width:900px){#grid{grid-template-columns:repeat(3,1fr)}}
 @media(min-width:1200px){#grid{grid-template-columns:repeat(4,1fr)}}
@@ -226,14 +223,7 @@ body{font-family:'Inter',sans-serif;background:#fff;color:#111;-webkit-tap-highl
   <div id="filters"></div>
 </div>
 <div id="subcats"></div>
-<div id="rbar">
-  <span id="count"></span>
-  <button id="faq-rbar-btn">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-    Dúvidas Frequentes
-  </button>
-  <select id="sort-sel"><option value="az">A &#8594; Z</option><option value="za">Z &#8594; A</option></select>
-</div>
+<div id="rbar"><span id="count"></span><select id="sort-sel"><option value="az">A &#8594; Z</option><option value="za">Z &#8594; A</option></select></div>
 <div id="grid"></div>
 <div id="empty"><p>Nenhum produto encontrado</p><button id="empty-reset">Ver todos</button></div>
 
@@ -403,6 +393,7 @@ function buildFilters(){
   for(var i=0;i<cats.length;i++){
     h+='<button class="chip'+(cats[i]==="Todos"?" active":"")+'" data-cat="'+cats[i]+'">'+cats[i]+'</button>';
   }
+  h+='<button id="faq-rbar-btn" class="chip" style="margin-left:auto;flex-shrink:0">&#63; Dúvidas</button>';
   wrap.innerHTML=h;
   wrap.querySelectorAll(".chip").forEach(function(b){
     b.addEventListener("click",function(){
@@ -738,7 +729,10 @@ function openFaqPage(){
   faqPage.scrollTop = 0;
   document.body.style.overflow = "hidden";
 }
-document.getElementById("faq-rbar-btn").addEventListener("click", openFaqPage);
+// Botão FAQ fica dentro do #filters (gerado dinamicamente), então usa delegação
+document.getElementById("filters").addEventListener("click", function(e){
+  if(e.target.id === "faq-rbar-btn") openFaqPage();
+});
 document.getElementById("faq-back").addEventListener("click", function(){
   faqPage.classList.remove("open");
   document.body.style.overflow = "";
