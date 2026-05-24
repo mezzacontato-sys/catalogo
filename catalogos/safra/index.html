@@ -8,7 +8,7 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Inter',sans-serif;background:#fff;color:#111;-webkit-tap-highlight-color:transparent}
-#header{background:#fff;padding:0 1.25rem;position:sticky;top:0;z-index:100;border-bottom:1px solid #eee}
+#header{background:#fff;padding:0 1.25rem;position:sticky;top:0;z-index:100}
 #header-top{display:flex;align-items:center;justify-content:space-between;height:60px}
 #logo-wrap{display:flex;align-items:center;gap:10px;max-width:65%}
 #logo-img{max-height:44px;max-width:160px;object-fit:contain;display:none}
@@ -28,8 +28,10 @@ body{font-family:'Inter',sans-serif;background:#fff;color:#111;-webkit-tap-highl
 .sug-item:hover{background:#f5f5f5}
 .sug-cat{font-size:11px;font-weight:400;color:#aaa;text-transform:uppercase;letter-spacing:.05em}
 .sug-hi{text-decoration:underline;text-underline-offset:2px}
-#filters{display:flex;gap:6px;overflow-x:auto;padding:10px 0 12px;scrollbar-width:none}
+#filter-row{display:flex;align-items:center;overflow:hidden;border-bottom:1px solid #eee}
+#filters{flex:1;min-width:0;display:flex;gap:6px;overflow-x:auto;padding:10px 0 12px;scrollbar-width:none;border-bottom:none}
 #filters::-webkit-scrollbar{display:none}
+#faq-rbar-btn{flex-shrink:0;margin-left:6px}
 .chip{flex-shrink:0;padding:6px 14px;border:1.5px solid #ddd;border-radius:100px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#888;background:#fff;cursor:pointer;transition:all .18s}
 .chip:hover{border-color:#111;color:#111}
 .chip.active{background:#111;border-color:#111;color:#fff}
@@ -220,7 +222,10 @@ body{font-family:'Inter',sans-serif;background:#fff;color:#111;-webkit-tap-highl
     <button id="clear-btn">&#215;</button>
     <div id="suggestions"></div>
   </div></div>
-  <div id="filters"></div>
+  <div id="filter-row">
+    <div id="filters"></div>
+    <button id="faq-rbar-btn" class="chip">&#63; Dúvidas</button>
+  </div>
 </div>
 <div id="subcats"></div>
 <div id="rbar"><span id="count"></span><select id="sort-sel"><option value="az">A &#8594; Z</option><option value="za">Z &#8594; A</option></select></div>
@@ -393,7 +398,6 @@ function buildFilters(){
   for(var i=0;i<cats.length;i++){
     h+='<button class="chip'+(cats[i]==="Todos"?" active":"")+'" data-cat="'+cats[i]+'">'+cats[i]+'</button>';
   }
-  h+='<button id="faq-rbar-btn" class="chip" style="margin-left:auto;flex-shrink:0">&#63; Dúvidas</button>';
   wrap.innerHTML=h;
   wrap.querySelectorAll(".chip").forEach(function(b){
     if(b.id==="faq-rbar-btn") return; // não é filtro de categoria
@@ -730,10 +734,7 @@ function openFaqPage(){
   faqPage.scrollTop = 0;
   document.body.style.overflow = "hidden";
 }
-// Botão FAQ fica dentro do #filters (gerado dinamicamente), então usa delegação
-document.getElementById("filters").addEventListener("click", function(e){
-  if(e.target.id === "faq-rbar-btn") openFaqPage();
-});
+document.getElementById("faq-rbar-btn").addEventListener("click", openFaqPage);
 document.getElementById("faq-back").addEventListener("click", function(){
   faqPage.classList.remove("open");
   document.body.style.overflow = "";
