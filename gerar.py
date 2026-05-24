@@ -186,7 +186,8 @@ def gerar(nome_empresa, whatsapp, csv_path, logo_url="", cor="#111", slug_overri
         return result.stdout.strip()
 
     git(["add", f"catalogos/{slug}/"], "git add catalogo")
-    git(["add", "fotos/logos/"], "git add logos")   # garante que logos novas sobem
+    git(["add", "fotos/"], "git add fotos")         # garante que fotos novas sobem
+    git(["add", "clientes/"], "git add clientes")   # garante CSVs atualizados
     git(["commit", "-m", f"add: catalogo {nome_empresa}"], "git commit")
     git(["push"], "git push")
 
