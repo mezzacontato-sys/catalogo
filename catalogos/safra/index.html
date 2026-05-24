@@ -401,6 +401,7 @@ function buildFilters(){
   h+='<button id="faq-rbar-btn" class="chip" style="margin-left:auto;flex-shrink:0">&#63; Dúvidas</button>';
   wrap.innerHTML=h;
   wrap.querySelectorAll(".chip").forEach(function(b){
+    if(b.id==="faq-rbar-btn") return; // não é filtro de categoria
     b.addEventListener("click",function(){
       cat=b.dataset.cat; sub="";
       wrap.querySelectorAll(".chip").forEach(function(x){x.classList.remove("active");});
