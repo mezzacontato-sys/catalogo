@@ -52,7 +52,7 @@ id,nome,categoria,subcategoria,descricao,unidade,destaque,ativo,foto_arquivo,bad
 51,Mesa Cascata,Móveis,Mesa,Mesa em madeira maciça com pé em tronco rústico. Peça única e exclusiva.,un,sim,sim,Mesa Cascata.jpg,,
 52,Conjunto Mesa Redonda,Móveis,Mesa,Mesa redonda giratória com 6 cadeiras em madeira maciça.,cj,sim,sim,Conjunto mesa Redonda.jpg,,
 53,Mesa Madeira Angelim,Móveis,Mesa,Mesa de madeira angelim com bancos laterais. Resistente e ideal para área externa.,cj,sim,sim,Mesa Madeira Angelim.jpg,,Mesa Madeira Angelim simulaçao.jpg
-55,Forramento,Outros,Forramento,Forramento de madeira para batentes e marcos. Acabamento profissional na instalação.,m²,sim,sim,Forramento.jpg,,Forramento montado.jpg
+55,Forramento,Guarnições,Forramento,Forramento de madeira para batentes e marcos. Acabamento profissional na instalação.,m²,sim,sim,Forramento.jpg,,Forramento montado.jpg
 56,Lambri,Outros,Lambri,Lambri de madeira para forro e revestimento. Instalação simples com resultado premium.,m²,sim,nao,lambri (21).jpg,,
 57,Madeirite Plastificado,Outros,Madeirite,Madeirite plastificado resistente à umidade. Ideal para construção e acabamento.,m²,sim,sim,madeirite plastificado.jpg,,
 58,Porta Revista,Portas,Sólidas,Porta sólida com design clássico e acabamento refinado. Uma das mais requisitadas da linha.,un,sim,sim,Revista.jpg,,porta revista simulacao.jpg
@@ -70,6 +70,9 @@ id,nome,categoria,subcategoria,descricao,unidade,destaque,ativo,foto_arquivo,bad
 69,Porta com Vidro Curvo,Portas,Sólidas,Porta sólida com vidro em formato curvo. Design exclusivo que une tradição e modernidade.,un,sim,sim,Com Vidro Curvo.jpg,,Com Vidro Curvo Simulacao.jpg
 70,Porta com Vidro Lateral,Portas,Sólidas,Porta sólida com vidro lateral integrado. Ampla entrada de luz com privacidade preservada.,un,sim,sim,Com Vidro Lateral.jpg,,Com Vidro Lateral Simulacao.jpg
 71,Deck,Deck,Tábuas,Deck de madeira tratada para áreas externas. Resistente à umidade e ao sol.,m²,sim,sim,Peça Deck.jpg,,Deck simulacao.jpg
-72,Porta de Correr Copaíba,Portas,Semi-Sólidas,Porta semi-sólida com sistema de correr. Praticidade e economia de espaço.,un,sim,sim,Porta de Correr Copaiba.jpg,,Porta Correr Copaiba.jpg
+72,Porta de Correr Copaíba,Portas,Semi-Sólidas,Porta semi-sólida com sistema de correr. Praticidade e economia de espaço.,un,sim,sim,Porta de Correr Copaiba Correta.jpg,,Porta Correr Copaiba.jpg
 73,Porta Concrem Amadeirada,Concrem,Revestida,Porta concrem com acabamento amadeirado. Visual natural com a praticidade do concrem.,un,sim,sim,Porta Concrem Amadeirada.jpg,,Porta Concrem Amadeirada Simulacao.jpg
 74,Porta Preta Concrem,Concrem,Revestida,Porta concrem na cor preta. Design contemporâneo e sofisticado para ambientes modernos.,un,sim,sim,Porta Preta Concrem.jpg,,Porta Preta Concrem Simulacao.jpg
+75,Porta de Correr Concrem,Concrem,Correr,Porta concrem no sistema de correr. Ideal para vãos sem batente com o acabamento sofisticado do concrem.,un,sim,sim,Porta Correr Concrem.png,,Porta Correr Concrem Simulacao.png
+76,Tábua de Pinus,Outros,Tábuas,Tábua de pinus em bruto para acabamentos, forros e projetos personalizados. Madeira leve, versátil e de fácil trabalhabilidade.,m²,sim,sim,Tabua Pinus.jpg,,Pinu Simulacao 1.jpeg|Pinu Simulacao 2.jpeg
+77,Alizar,Guarnições,Alizar,Acabamento em madeira para marcos e batentes de porta. O detalhe que faz diferença no resultado final da instalação.,un,sim,sim,Alizar.jpg,,Alizar 2.png|Alizar 3 correta.jpg
