@@ -37,9 +37,12 @@ body{font-family:'Inter',sans-serif;background:#fff;color:#111;-webkit-tap-highl
 .sub-chip{padding:5px 12px;border:1.5px solid #ddd;border-radius:100px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#999;background:#fff;cursor:pointer;transition:all .18s}
 .sub-chip:hover{border-color:#555;color:#555}
 .sub-chip.active{background:#111;border-color:#111;color:#fff}
-#rbar{display:flex;align-items:center;justify-content:space-between;padding:8px 1.25rem;border-bottom:1px solid #eee}
-#count{font-size:11px;font-weight:500;color:#aaa;letter-spacing:.06em;text-transform:uppercase}
-#sort-sel{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#666;border:none;background:none;cursor:pointer;outline:none}
+#rbar{display:flex;align-items:center;justify-content:space-between;padding:8px 1.25rem;border-bottom:1px solid #eee;gap:8px}
+#count{font-size:11px;font-weight:500;color:#aaa;letter-spacing:.06em;text-transform:uppercase;flex-shrink:0}
+#faq-rbar-btn{display:flex;align-items:center;gap:5px;background:none;border:1.5px solid #ddd;border-radius:100px;padding:5px 11px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#666;cursor:pointer;transition:all .18s;white-space:nowrap}
+#faq-rbar-btn:hover{border-color:#111;color:#111}
+#faq-rbar-btn svg{width:13px;height:13px;flex-shrink:0}
+#sort-sel{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#666;border:none;background:none;cursor:pointer;outline:none;flex-shrink:0}
 #grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:#eee;padding-bottom:90px}
 @media(min-width:900px){#grid{grid-template-columns:repeat(3,1fr)}}
 @media(min-width:1200px){#grid{grid-template-columns:repeat(4,1fr)}}
@@ -223,7 +226,14 @@ body{font-family:'Inter',sans-serif;background:#fff;color:#111;-webkit-tap-highl
   <div id="filters"></div>
 </div>
 <div id="subcats"></div>
-<div id="rbar"><span id="count"></span><select id="sort-sel"><option value="az">A &#8594; Z</option><option value="za">Z &#8594; A</option></select></div>
+<div id="rbar">
+  <span id="count"></span>
+  <button id="faq-rbar-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    Dúvidas Frequentes
+  </button>
+  <select id="sort-sel"><option value="az">A &#8594; Z</option><option value="za">Z &#8594; A</option></select>
+</div>
 <div id="grid"></div>
 <div id="empty"><p>Nenhum produto encontrado</p><button id="empty-reset">Ver todos</button></div>
 
@@ -279,20 +289,14 @@ body{font-family:'Inter',sans-serif;background:#fff;color:#111;-webkit-tap-highl
   </div>
 </div>
 
-<div id="faq-fab">
-  <button id="faq-btn" aria-label="Dúvidas frequentes">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-  </button>
-</div>
-
 <!-- FAQ PAGE -->
 <div id="faq-page">
   <div id="faq-page-header">
     <button id="faq-back">
       <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-      Voltar
+      Voltar para o Catálogo
     </button>
-    <span id="faq-page-title">Dúvidas Frequentes</span>
+    <span id="faq-page-title"></span>
   </div>
   <p id="faq-page-intro">Toque em um tópico para ler</p>
   <div id="faq-grid">
@@ -729,11 +733,12 @@ var FAQ_DATA = [
 ];
 
 var faqPage = document.getElementById("faq-page");
-document.getElementById("faq-btn").addEventListener("click", function(){
+function openFaqPage(){
   faqPage.classList.add("open");
   faqPage.scrollTop = 0;
   document.body.style.overflow = "hidden";
-});
+}
+document.getElementById("faq-rbar-btn").addEventListener("click", openFaqPage);
 document.getElementById("faq-back").addEventListener("click", function(){
   faqPage.classList.remove("open");
   document.body.style.overflow = "";
