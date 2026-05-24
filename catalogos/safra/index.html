@@ -136,34 +136,38 @@ body{font-family:'Inter',sans-serif;background:#fff;color:#111;-webkit-tap-highl
 #faq-btn svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round}
 
 /* ── FAQ PÁGINA ── */
-#faq-page{
-  position:fixed;inset:0;z-index:500;
-  background:#fff;overflow-y:auto;
-  transform:translateX(100%);
-  transition:transform .38s cubic-bezier(.4,0,.2,1);
-}
+#faq-page{position:fixed;inset:0;z-index:500;background:#f7f7f5;overflow-y:auto;transform:translateX(100%);transition:transform .38s cubic-bezier(.4,0,.2,1)}
 #faq-page.open{transform:translateX(0)}
-#faq-page-header{
-  position:sticky;top:0;background:#fff;z-index:10;
-  border-bottom:1px solid #eee;
-  display:flex;align-items:center;gap:12px;
-  padding:0 1.25rem;height:60px;
-}
-#faq-back{background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#111;padding:0;flex-shrink:0}
-#faq-back svg{width:18px;height:18px;stroke:#111;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-#faq-page-title{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#111}
-#faq-page-intro{padding:1.5rem 1.25rem .5rem;font-size:13px;color:#888;line-height:1.7;max-width:640px}
-#faq-list{max-width:640px;margin:0 auto;padding:.5rem 0 5rem}
-.faq-item{border-bottom:1px solid #eee}
-.faq-q{width:100%;background:none;border:none;text-align:left;padding:1.1rem 1.25rem;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;letter-spacing:.01em;color:#111;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
-.faq-q .faq-arrow{flex-shrink:0;width:18px;height:18px;stroke:#bbb;fill:none;stroke-width:2.2;stroke-linecap:round;transition:transform .25s,stroke .2s}
-.faq-item.open .faq-arrow{transform:rotate(180deg);stroke:#111}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .38s cubic-bezier(.4,0,.2,1)}
-.faq-item.open .faq-a{max-height:700px}
-.faq-a-inner{padding:.2rem 1.25rem 1.4rem;font-size:13.5px;line-height:1.9;color:#444}
-.faq-a-inner strong{color:#111;font-weight:700}
-.faq-a-inner ul{padding-left:1.2rem;margin:.5rem 0}
-.faq-a-inner li{margin-bottom:.4rem}
+#faq-page-header{position:sticky;top:0;background:#fff;z-index:10;border-bottom:1px solid #eee;display:flex;align-items:center;gap:12px;padding:0 1.25rem;height:60px}
+#faq-back{background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:5px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#111;padding:0;flex-shrink:0}
+#faq-back svg{width:17px;height:17px;stroke:#111;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+#faq-page-title{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#111}
+#faq-page-intro{padding:1.4rem 1.1rem .8rem;font-size:12px;color:#999;letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+#faq-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:0 1.1rem 6rem}
+@media(min-width:640px){#faq-grid{grid-template-columns:repeat(3,1fr);max-width:900px;margin:0 auto}}
+.faq-card{position:relative;border-radius:10px;overflow:hidden;cursor:pointer;aspect-ratio:3/4;background:#222;-webkit-tap-highlight-color:transparent}
+.faq-card-img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.25,.46,.45,.94);display:block}
+.faq-card:hover .faq-card-img{transform:scale(1.06)}
+.faq-card-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.78) 0%,rgba(0,0,0,.18) 55%,transparent 100%)}
+.faq-card-title{position:absolute;bottom:0;left:0;right:0;padding:.9rem .85rem;color:#fff;font-size:13px;font-weight:700;letter-spacing:.02em;line-height:1.3}
+
+/* ── FAQ ARTICLE MODAL ── */
+#faq-art-ov{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:600;display:none;align-items:flex-end;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+#faq-art-ov.open{display:flex}
+#faq-art{background:#fff;width:100%;max-height:92vh;overflow-y:auto;transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);border-radius:16px 16px 0 0}
+#faq-art-ov.open #faq-art{transform:translateY(0)}
+@media(min-width:640px){#faq-art-ov{align-items:center;justify-content:center}#faq-art{width:min(580px,92vw);max-height:82vh;border-radius:10px;transform:scale(.96)}#faq-art-ov.open #faq-art{transform:scale(1)}}
+#faq-art-cover{width:100%;height:200px;object-fit:cover;display:block}
+@media(min-width:640px){#faq-art-cover{height:240px}}
+#faq-art-body{padding:1.4rem 1.25rem 2rem}
+#faq-art-close{position:absolute;top:12px;right:12px;background:rgba(0,0,0,.45);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;z-index:5}
+#faq-art-top{position:relative}
+#faq-art-title{font-size:18px;font-weight:700;letter-spacing:.01em;line-height:1.3;margin-bottom:1rem;color:#111}
+#faq-art-content{font-size:14px;line-height:1.9;color:#444}
+#faq-art-content strong{color:#111;font-weight:700}
+#faq-art-content ul{padding-left:1.2rem;margin:.5rem 0 1rem}
+#faq-art-content li{margin-bottom:.45rem}
+#faq-art-content br+br{display:block;margin-top:.4rem}
 
 /* ── FULLSCREEN VIEWER ── */
 #fs-ov{position:fixed;inset:0;background:#000;z-index:600;display:none;opacity:0;transition:opacity .22s ease}
@@ -290,107 +294,53 @@ body{font-family:'Inter',sans-serif;background:#fff;color:#111;-webkit-tap-highl
     </button>
     <span id="faq-page-title">Dúvidas Frequentes</span>
   </div>
-  <p id="faq-page-intro">Respondemos aqui as perguntas que mais chegam por WhatsApp. Clique em cada tópico para expandir.</p>
-  <div id="faq-list">
+  <p id="faq-page-intro">Toque em um tópico para ler</p>
+  <div id="faq-grid">
 
-    <div class="faq-item">
-      <button class="faq-q">Preciso de alizar?
-        <svg class="faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner">
-        O alizar (também chamado de <strong>guarnição</strong>) serve para cobrir a folga entre o batente da porta e o revestimento da parede — aquela fresta que fica visível quando a parede está rebocada ou com azulejo.<br><br>
-        <strong>Você precisa de alizar quando:</strong>
-        <ul>
-          <li>A parede tem revestimento (reboco, gesso, azulejo)</li>
-          <li>O batente não cobre completamente a espessura da parede</li>
-        </ul>
-        <strong>Não precisa quando:</strong>
-        <ul>
-          <li>A instalação é em alvenaria à vista</li>
-          <li>O batente já cobre toda a espessura da parede</li>
-        </ul>
-        Na dúvida, meça a espessura total da sua parede (incluindo reboco dos dois lados) e compare com a largura do batente que vai levar.
-      </div></div>
+    <div class="faq-card" data-faq="0">
+      <img class="faq-card-img" src="/fotos/Forramento montado.jpg" alt="" loading="lazy">
+      <div class="faq-card-ov"></div>
+      <div class="faq-card-title">Preciso de alizar?</div>
     </div>
 
-    <div class="faq-item">
-      <button class="faq-q">O que vem em uma porta completa?
-        <svg class="faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner">
-        Uma porta completa normalmente inclui:
-        <ul>
-          <li><strong>Folha</strong> — a parte que abre e fecha</li>
-          <li><strong>Batente (marco)</strong> — a moldura fixada na parede</li>
-          <li><strong>Alizar (guarnição)</strong> — a tira que cobre a folga entre o batente e a parede</li>
-        </ul>
-        <strong>Não está incluso:</strong> fechadura, dobradiças, maçaneta e instalação. Esses itens são vendidos separadamente.<br><br>
-        Sempre confirme conosco o que está incluído no modelo que você escolheu, pois alguns conjuntos especiais podem variar.
-      </div></div>
+    <div class="faq-card" data-faq="1">
+      <img class="faq-card-img" src="/fotos/folha londres.jpg" alt="" loading="lazy">
+      <div class="faq-card-ov"></div>
+      <div class="faq-card-title">O que vem em uma porta completa?</div>
     </div>
 
-    <div class="faq-item">
-      <button class="faq-q">Dobradiça normal × Dobradiça Pivotante
-        <svg class="faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner">
-        <strong>Dobradiça normal (comum):</strong>
-        <ul>
-          <li>Fixada na lateral da porta e no batente</li>
-          <li>Geralmente 3 dobradiças por porta</li>
-          <li>Mais barata e fácil de instalar e trocar</li>
-          <li>Ideal para portas padrão de quarto e banheiro</li>
-        </ul>
-        <strong>Dobradiça pivotante:</strong>
-        <ul>
-          <li>Ponto de giro único no topo e no rodapé da porta</li>
-          <li>Permite portas maiores e mais pesadas</li>
-          <li>Visual moderno, sem dobradiças aparentes na lateral</li>
-          <li>Instalação mais trabalhosa e custo mais alto</li>
-          <li>Muito usada em portas de entrada e portões</li>
-        </ul>
-      </div></div>
+    <div class="faq-card" data-faq="2">
+      <img class="faq-card-img" src="/fotos/itaparica simulaçao.jpg" alt="" loading="lazy">
+      <div class="faq-card-ov"></div>
+      <div class="faq-card-title">Dobradiça normal × Pivotante</div>
     </div>
 
-    <div class="faq-item">
-      <button class="faq-q">Para qual lado minha porta abre?
-        <svg class="faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner">
-        Para descobrir o lado de abertura, <strong>fique do lado de fora do ambiente</strong> (o lado que você empurra a porta para entrar) e observe:<br><br>
-        <ul>
-          <li><strong>Abre para direita:</strong> as dobradiças ficam do seu lado direito</li>
-          <li><strong>Abre para esquerda:</strong> as dobradiças ficam do seu lado esquerdo</li>
-        </ul>
-        Dica: pense em qual lado é mais prático para não bater em móveis, parede ou janelas. Portas de banheiro costumam abrir para dentro; portas de área externa abrem para fora.<br><br>
-        Ao fazer o pedido, informe sempre o lado desejado para evitar erros na hora da instalação.
-      </div></div>
+    <div class="faq-card" data-faq="3">
+      <img class="faq-card-img" src="/fotos/Janela Tabicão Pivotante Aberto.jpg" alt="" loading="lazy">
+      <div class="faq-card-ov"></div>
+      <div class="faq-card-title">Para qual lado minha porta abre?</div>
     </div>
 
-    <div class="faq-item">
-      <button class="faq-q">Indicações para Quarto, Banheiro e Área Externa
-        <svg class="faq-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner">
-        <strong>🛏 Quarto:</strong>
-        <ul>
-          <li>Qualquer porta da linha <strong>Sólida</strong> ou <strong>Semi-Sólida</strong> funciona bem</li>
-          <li>Para maior isolamento acústico, prefira as <strong>Sólidas</strong></li>
-        </ul>
-        <strong>🚿 Banheiro:</strong>
-        <ul>
-          <li>Prefira portas resistentes à umidade: <strong>Porta Naval</strong>, <strong>Concrem</strong> ou <strong>Sólidas em Teca</strong></li>
-          <li>Evite semi-sólidas simples (Paraná, Copaíba) em banheiros com muita umidade</li>
-        </ul>
-        <strong>🌳 Área externa (garagem, quintal, varanda):</strong>
-        <ul>
-          <li>Use madeira <strong>Teca</strong> ou <strong>Concrem</strong> — ambas resistem ao sol e à chuva</li>
-          <li>Portas da linha Colmeia também são ótimas para áreas externas cobertas</li>
-          <li>Aplique verniz ou stain periodicamente para prolongar a vida útil</li>
-        </ul>
-      </div></div>
+    <div class="faq-card" data-faq="4">
+      <img class="faq-card-img" src="/fotos/almofada sacada simulaçao.jpg" alt="" loading="lazy">
+      <div class="faq-card-ov"></div>
+      <div class="faq-card-title">Indicações por ambiente</div>
     </div>
 
+  </div>
+</div>
+
+<!-- FAQ ARTICLE MODAL -->
+<div id="faq-art-ov">
+  <div id="faq-art">
+    <div id="faq-art-top">
+      <img id="faq-art-cover" src="" alt="">
+      <button id="faq-art-close">&#215;</button>
+    </div>
+    <div id="faq-art-body">
+      <div id="faq-art-title"></div>
+      <div id="faq-art-content"></div>
+    </div>
   </div>
 </div>
 
@@ -750,6 +700,34 @@ document.getElementById("cart-wpp-btn").addEventListener("click",sendCartWpp);
 
 
 // ── FAQ PÁGINA ────────────────────────────────────────────
+var FAQ_DATA = [
+  {
+    title: "Preciso de alizar?",
+    cover: "/fotos/Forramento montado.jpg",
+    html: '<p>O alizar (também chamado de <strong>guarnição</strong>) serve para cobrir a folga entre o batente da porta e o revestimento da parede — aquela fresta que fica visível quando a parede está rebocada ou com azulejo.</p><br><strong>Você precisa de alizar quando:</strong><ul><li>A parede tem revestimento (reboco, gesso, azulejo)</li><li>O batente não cobre completamente a espessura da parede</li></ul><strong>Não precisa quando:</strong><ul><li>A instalação é em alvenaria à vista</li><li>O batente já cobre toda a espessura da parede</li></ul><p>Na dúvida, meça a espessura total da sua parede (incluindo reboco dos dois lados) e compare com a largura do batente que vai levar.</p>'
+  },
+  {
+    title: "O que vem em uma porta completa?",
+    cover: "/fotos/folha londres.jpg",
+    html: '<p>Uma porta completa normalmente inclui:</p><ul><li><strong>Folha</strong> — a parte que abre e fecha</li><li><strong>Batente (marco)</strong> — a moldura fixada na parede</li><li><strong>Alizar (guarnição)</strong> — a tira que cobre a folga entre o batente e a parede</li></ul><p><strong>Não está incluso:</strong> fechadura, dobradiças, maçaneta e instalação. Esses itens são vendidos separadamente.</p><br><p>Sempre confirme conosco o que está incluído no modelo que você escolheu, pois alguns conjuntos especiais podem variar.</p>'
+  },
+  {
+    title: "Dobradiça normal × Dobradiça Pivotante",
+    cover: "/fotos/itaparica simulaçao.jpg",
+    html: '<strong>Dobradiça normal (comum):</strong><ul><li>Fixada na lateral da porta e no batente</li><li>Geralmente 3 dobradiças por porta</li><li>Mais barata e fácil de instalar e trocar</li><li>Ideal para portas padrão de quarto e banheiro</li></ul><strong>Dobradiça pivotante:</strong><ul><li>Ponto de giro único no topo e no rodapé da porta</li><li>Permite portas maiores e mais pesadas</li><li>Visual moderno, sem dobradiças aparentes na lateral</li><li>Instalação mais trabalhosa e custo mais alto</li><li>Muito usada em portas de entrada e portões</li></ul>'
+  },
+  {
+    title: "Para qual lado minha porta abre?",
+    cover: "/fotos/Janela Tabicão Pivotante Aberto.jpg",
+    html: '<p>Para descobrir o lado de abertura, <strong>fique do lado de fora do ambiente</strong> (o lado que você empurra a porta para entrar) e observe:</p><ul><li><strong>Abre para direita:</strong> as dobradiças ficam do seu lado direito</li><li><strong>Abre para esquerda:</strong> as dobradiças ficam do seu lado esquerdo</li></ul><p>Dica: pense em qual lado é mais prático para não bater em móveis, parede ou janelas. Portas de banheiro costumam abrir para dentro; portas de área externa abrem para fora.</p><br><p>Ao fazer o pedido, informe sempre o lado desejado para evitar erros na hora da instalação.</p>'
+  },
+  {
+    title: "Indicações por ambiente",
+    cover: "/fotos/almofada sacada simulaçao.jpg",
+    html: '<strong>🛏 Quarto:</strong><ul><li>Qualquer porta da linha <strong>Sólida</strong> ou <strong>Semi-Sólida</strong> funciona bem</li><li>Para maior isolamento acústico, prefira as <strong>Sólidas</strong></li></ul><strong>🚿 Banheiro:</strong><ul><li>Prefira portas resistentes à umidade: <strong>Porta Naval</strong>, <strong>Concrem</strong> ou <strong>Sólidas em Teca</strong></li><li>Evite semi-sólidas simples (Paraná, Copaíba) em banheiros com muita umidade</li></ul><strong>🌳 Área externa (garagem, quintal, varanda):</strong><ul><li>Use madeira <strong>Teca</strong> ou <strong>Concrem</strong> — ambas resistem ao sol e à chuva</li><li>Portas da linha Colmeia também são ótimas para áreas externas cobertas</li><li>Aplique verniz ou stain periodicamente para prolongar a vida útil</li></ul>'
+  }
+];
+
 var faqPage = document.getElementById("faq-page");
 document.getElementById("faq-btn").addEventListener("click", function(){
   faqPage.classList.add("open");
@@ -760,13 +738,25 @@ document.getElementById("faq-back").addEventListener("click", function(){
   faqPage.classList.remove("open");
   document.body.style.overflow = "";
 });
-document.querySelectorAll(".faq-q").forEach(function(btn){
-  btn.addEventListener("click", function(){
-    var item = btn.closest(".faq-item");
-    var isOpen = item.classList.contains("open");
-    document.querySelectorAll(".faq-item.open").forEach(function(x){ x.classList.remove("open"); });
-    if(!isOpen) item.classList.add("open");
-  });
+
+// Article modal
+var faqArtOv  = document.getElementById("faq-art-ov");
+var faqArt    = document.getElementById("faq-art");
+function openFaqArt(idx){
+  var d = FAQ_DATA[idx];
+  document.getElementById("faq-art-cover").src   = d.cover;
+  document.getElementById("faq-art-title").textContent = d.title;
+  document.getElementById("faq-art-content").innerHTML  = d.html;
+  faqArt.scrollTop = 0;
+  faqArtOv.classList.add("open");
+}
+function closeFaqArt(){
+  faqArtOv.classList.remove("open");
+}
+document.getElementById("faq-art-close").addEventListener("click", closeFaqArt);
+faqArtOv.addEventListener("click", function(e){ if(e.target===faqArtOv) closeFaqArt(); });
+document.querySelectorAll(".faq-card").forEach(function(card){
+  card.addEventListener("click", function(){ openFaqArt(parseInt(card.dataset.faq)); });
 });
 
 // ── FULLSCREEN VIEWER ─────────────────────────────────────
